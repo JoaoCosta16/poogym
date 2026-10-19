@@ -1,10 +1,9 @@
-import java.time.LocalDateTime;
-
 /**
  * Classe AulaGrupo
  * @author Gustavo
  * @version 1.0
  */
+import java.time.LocalDateTime;
 
 public class AulaGrupo extends Atividades{
     private String modalidade;

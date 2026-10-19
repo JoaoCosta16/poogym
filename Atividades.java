@@ -1,11 +1,9 @@
-
-import java.time.LocalDateTime;
-
 /**
  * Classe Atividades
  * @author Gustavo
  * @version 1.0
  */
+import java.time.LocalDateTime;
 
 public class Atividades {
     private String nomeAtividade;
