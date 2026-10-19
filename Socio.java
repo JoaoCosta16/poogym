@@ -9,7 +9,7 @@ public class Socio {
     private int numeroSocio;
     private String mailSocio;
 
-    private Socio(String nomeSocio,int numeroSocio,String mailSocio){
+    public Socio(String nomeSocio,int numeroSocio,String mailSocio){
         this.nomeSocio = nomeSocio;
         this.numeroSocio = numeroSocio;
         this.mailSocio = mailSocio;
