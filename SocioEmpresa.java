@@ -9,11 +9,11 @@ public class SocioEmpresa extends Socio{
         
     }
 
-    public int getnifEmpresa() {
+    public int getNifEmpresa() {
         return nifEmpresa;
     }
 
-    public String getnomeEmpresa() {
+    public String getNomeEmpresa() {
         return nomeEmpresa;
     }
 }

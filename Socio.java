@@ -15,15 +15,15 @@ public class Socio {
         this.mailSocio = mailSocio;
     }
 
-    public String getnomeSocio(){
+    public String getNomeSocio(){
         return nomeSocio;
     }
 
-    public int getnumeroSocio(){
+    public int getNumeroSocio(){
         return numeroSocio;
     }
 
-    public String getmailSocio(){
+    public String getMailSocio(){
         return mailSocio;
     }
 
