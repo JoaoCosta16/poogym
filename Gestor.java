@@ -5,16 +5,14 @@ public class Gestor {
     /**
      * Lista dinamica que contem todos os socios registados no ginasio
      */
-    private ArrayList<SocioIndividual> sociosIndividuais;
-    private ArrayList<SocioEmpresa> sociosEmpresa;
+    private ArrayList<Socio> socios;
 
     /**
      * Construtor da classe Gestor
      * Inicia a lista dos socios vazia
      */
     public Gestor(){
-        sociosEmpresa = new ArrayList<>();
-        sociosIndividuais = new ArrayList<>();
+        socios = new ArrayList<>();
 
     }
 
