@@ -3,10 +3,9 @@ public class SocioEmpresa extends Socio{
     private String nomeEmpresa;
 
     public SocioEmpresa(String nomeSocio, int numeroSocio, String mailSocio, int nifEmpresa, String nomeEmpresa){
-        super(nomeSocio, numeroSocio, mailSocio);
+        super(nomeSocio, numeroSocio, mailSocio, "EMPRESA");
         this.nifEmpresa = nifEmpresa;
         this.nomeEmpresa = nomeEmpresa;
-        
     }
 
     public int getNifEmpresa() {

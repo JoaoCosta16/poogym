@@ -11,22 +11,22 @@ import java.util.Scanner;
         int opcao = -1;
         do {
             System.out.println("\n========== POOGYM ==========");
-            System.out.println("1 - Registar Sócio");
+            System.out.println("1 - Registar Socio");
             System.out.println("2 - Registar Instrutor");
             System.out.println("3 - Registar Atividade");
-            System.out.println("4 - Listar Sócios");
+            System.out.println("4 - Listar Socios");
             System.out.println("5 - Listar Atividades");
             System.out.println("6 - Criar Marcação");
-            System.out.println("7 - Listar Marcações");
+            System.out.println("7 - Listar Marcacoes");
             System.out.println("8 - Resumo de Atividades");
             System.out.println("9 - Mais Popular");
-            System.out.println("10 - Valores Sócio");
+            System.out.println("10 - Valores Socio");
             System.out.println("0 - Sair");
-            System.out.print("Escolha uma opção: ");
+            System.out.print("Escolha uma opcao: ");
 
             opcao = sc.nextInt();
             sc.nextLine(); // Limpar o buffer do scanner
-            
+
             switch (opcao) {
                 case 1:
                     //registarSocio();
@@ -62,9 +62,63 @@ import java.util.Scanner;
                     System.out.println("A sair...");
                     break;
                 default:
-                    System.out.println("Opção inválida!");
+                    System.out.println("Opcao invalida!");
             }
         } while (opcao != 0);
+    }
+
+    public void registarSocio() {
+        Socio novoSocio = null;
+        System.out.println("---Registar Socio---");
+        
+        System.out.print("Nome");
+        String nomeSocio = sc.nextLine();
+
+        System.out.print("Numero:");
+        int numeroSocio = sc.nextInt();
+
+        System.out.print("Email:");
+        String email = sc.nextLine();
+
+        System.out.print("Introduza o numero correspondente ao seu tipo de Socio: (0 - Individual | 1 - Empresa)");
+        int tipo = sc.nextInt();
+
+        switch (tipo) {
+            case 0:
+                System.out.println("--Socio Individual Escolhido--");
+                System.out.print("Ano de nascimento: ");
+                int ano = sc.nextInt();
+                novoSocio = new SocioIndividual(nomeSocio, numeroSocio, email, ano);
+
+                if(adicionarSocio(novoSocio)) {
+                    System.out.println("Socio Individual adicionado com sucesso")
+                } else {
+                    System.out.print("Erro a adicionar socio");
+                }
+
+                break;
+            case 1: 
+                System.out.println("--Socio Empresa Escolhido--");
+
+                System.out.print("Nome da empresa: ");
+                String nomeEmpresa = sc.nextLine();
+
+                System.out.print("NIF da empresa: ");
+                int NIF = sc.nextInt();
+
+                novoSocio = new SocioEmpresa(nomeSocio, numeroSocio, email, NIF ,nomeEmpresa);
+                
+                if(adicionarSocio(novoSocio)) {
+                    System.out.println("Socio Individual adicionado com sucesso")
+                } else {
+                    System.out.print("Erro a adicionar socio");
+                }
+                
+                break;
+            default:
+                System.out.println("Opcao invalida!");
+        }
+
     }
 
     public void registarInstrutor() {
