@@ -9,7 +9,7 @@ public class Instrutor {
     private String generoInstrutor;
     private String formacaoInstrutor;
 
-    private Instrutor (String nomeInstrutor, String generoInstrutor, String formacaoInstrutor) {
+    public Instrutor (String nomeInstrutor, String generoInstrutor, String formacaoInstrutor) {
         this.nomeInstrutor = nomeInstrutor;
         this.generoInstrutor = generoInstrutor;
         this.formacaoInstrutor = formacaoInstrutor;

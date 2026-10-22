@@ -31,7 +31,6 @@ public class Gestor {
     public boolean existeSocio(int numeroSocio) {
         for (Socio s : socios) {
             if (s.getNumeroSocio() == numeroSocio) {
-                System.err.println("O numero inserido ja se encontra registado");
                 return true;
             }   
         }
@@ -69,7 +68,6 @@ public class Gestor {
     public boolean existeInstrutor(String nomeInstrutor) {
         for (Instrutor i : instrutores) {
             if (i.getNomeInstrutor().equals(nomeInstrutor)) {
-                System.err.println("O nome inserido ja se encontra registado");
                 return true;
             }
         }
