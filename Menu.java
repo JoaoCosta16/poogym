@@ -7,10 +7,13 @@
 import java.util.Scanner;
     public class Menu {
     private Gestor gestor;
-    private Scanner sc = new Scanner(System.in);
+    private Scanner sc;
     
     public Menu() {
         this.gestor = new Gestor();
+        this.sc = new Scanner(System.in);
+        
+        this.gestor.carregarDados();
     }
 
     private int lerInteiro(String mensagem) {
