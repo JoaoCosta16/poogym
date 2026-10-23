@@ -4,11 +4,12 @@
  * @version 2.0
  */
 
+import java.time.LocalDateTime;
 import java.util.Scanner;
-    public class Menu {
+
+public class Menu {
     private Gestor gestor;
     private Scanner sc;
-    
     public Menu() {
         this.gestor = new Gestor();
         this.sc = new Scanner(System.in);
@@ -39,6 +40,17 @@ import java.util.Scanner;
         return texto;
     }
 
+    private LocalDateTime lerDataHora() {
+        System.out.println("--- Inserir Data e Hora ---");
+        int dia = lerInteiro("Dia: ");
+        int mes = lerInteiro("Mes: ");
+        int ano = lerInteiro("Ano: ");
+        int hora = lerInteiro("Hora (0-23): ");
+        int minuto = lerInteiro("Minutos (0-59): ");
+
+        return LocalDateTime.of(ano, mes, dia, hora, minuto);
+    }
+
     public void iniciarMenu() {
         int opcao = -1;
         do {
@@ -66,7 +78,7 @@ import java.util.Scanner;
                     registarInstrutor();
                     break;
                 case 3:
-                    //registarAtividade();
+                    registarAtividade();
                     break;
                 case 4:
                     listarSocios();
@@ -151,6 +163,26 @@ import java.util.Scanner;
             System.out.println("Instrutor registado com sucesso");
         } else {
             System.out.println("Erro ao registar o instrutor");
+        }
+    }
+
+    public void registarAtividade() {
+        System.out.println("---Registar Atividade---");
+
+        String nome = lerString("Nome da atividade: ");
+
+        String descricao = lerString("Descricao da atividade: ");
+
+        LocalDateTime horario = lerDataHora();
+        
+        int duracao = lerInteiro("Duracao da atividade (em minutos): ");
+
+        Atividades atividade = new Atividades(nome, descricao, horario, duracao);
+
+        if (gestor.adicionarAtividade(atividade)) {
+            System.out.println("Atividade registada com sucesso");
+        } else {
+            System.out.println("Erro ao registar a atividade");
         }
     }
 

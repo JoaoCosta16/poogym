@@ -12,6 +12,7 @@ public class Gestor {
      */
     private ArrayList<Socio> socios;
     private ArrayList<Instrutor> instrutores;
+    private ArrayList<Atividades> atividades;
 
     /**
      * Construtor da classe Gestor
@@ -20,6 +21,7 @@ public class Gestor {
     public Gestor(){
         socios = new ArrayList<>();
         instrutores = new ArrayList<>();
+        atividades = new ArrayList<>();
     }
 
     /**
@@ -94,6 +96,28 @@ public class Gestor {
      */
     public ArrayList<Instrutor> getInstrutores() {
         return instrutores;
+    }
+
+    /**
+     * Adiciona uma nova atividade a lista caso esta seja valida
+     * @param novaAtividade o objeto da Classe Atividades a adicionar
+     * @return true se a insercao tiver sucesso e false caso contrario
+     */
+
+    public boolean adicionarAtividade(Atividades novaAtividade) {
+        if (novaAtividade == null) {
+            return false;
+        }
+        atividades.add(novaAtividade);
+        return true;
+    }
+
+    /**
+     * Obtem a lista com todas as atividades registadas no ginasio
+     * @return
+     */
+    public ArrayList<Atividades> getAtividades() {
+        return atividades;
     }
 
     public void carregarDados() {
