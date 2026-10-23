@@ -29,7 +29,7 @@ import java.util.Scanner;
 
             switch (opcao) {
                 case 1:
-                    //registarSocio();
+                    registarSocio();
                     break;
                 case 2:
                     registarInstrutor();
@@ -71,17 +71,20 @@ import java.util.Scanner;
         Socio novoSocio = null;
         System.out.println("---Registar Socio---");
         
-        System.out.print("Nome");
+        System.out.print("Nome: ");
         String nomeSocio = sc.nextLine();
 
-        System.out.print("Numero:");
+        System.out.print("Numero: ");
         int numeroSocio = sc.nextInt();
 
-        System.out.print("Email:");
+        sc.nextLine(); //limpar buffer
+
+        System.out.print("Email: ");
         String email = sc.nextLine();
 
         System.out.print("Introduza o numero correspondente ao seu tipo de Socio: (0 - Individual | 1 - Empresa)");
         int tipo = sc.nextInt();
+        sc.nextLine(); //limpar buffer
 
         switch (tipo) {
             case 0:
@@ -89,12 +92,6 @@ import java.util.Scanner;
                 System.out.print("Ano de nascimento: ");
                 int ano = sc.nextInt();
                 novoSocio = new SocioIndividual(nomeSocio, numeroSocio, email, ano);
-
-                if(adicionarSocio(novoSocio)) {
-                    System.out.println("Socio Individual adicionado com sucesso")
-                } else {
-                    System.out.print("Erro a adicionar socio");
-                }
 
                 break;
             case 1: 
@@ -107,18 +104,18 @@ import java.util.Scanner;
                 int NIF = sc.nextInt();
 
                 novoSocio = new SocioEmpresa(nomeSocio, numeroSocio, email, NIF ,nomeEmpresa);
-                
-                if(adicionarSocio(novoSocio)) {
-                    System.out.println("Socio Individual adicionado com sucesso")
-                } else {
-                    System.out.print("Erro a adicionar socio");
-                }
-                
+
                 break;
             default:
                 System.out.println("Opcao invalida!");
         }
-
+        if (novoSocio != null) {
+            if(gestor.adicionarSocio(novoSocio)) {
+                System.out.println("Socio adicionado com sucesso");
+            } else {
+                System.out.println("Erro a adicionar socio");
+            }
+        }
     }
 
     public void registarInstrutor() {
