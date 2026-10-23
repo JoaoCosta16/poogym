@@ -1,3 +1,9 @@
+/**
+ * Classe SocioEmpresa
+ * @author Gustavo e João
+ * @version 1.0
+ */
+
 public class SocioEmpresa extends Socio{
     private int nifEmpresa;
     private String nomeEmpresa;
@@ -14,5 +20,9 @@ public class SocioEmpresa extends Socio{
 
     public String getNomeEmpresa() {
         return nomeEmpresa;
+    }
+
+    public String toString() {
+        return super.toString() + ", NIF: " + nifEmpresa + ", Nome da Empresa: " + nomeEmpresa;
     }
 }

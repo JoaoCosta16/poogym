@@ -1,6 +1,6 @@
 /**
  * Classe Atividades
- * @author Gustavo
+ * @author Gustavo e Joao
  * @version 1.0
  */
 import java.time.LocalDateTime;

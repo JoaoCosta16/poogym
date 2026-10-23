@@ -1,6 +1,6 @@
 /**
  * Classe Instrutor
- * @author Gustavo
+ * @author Gustavo e Joao
  * @version 1.0
  */
 

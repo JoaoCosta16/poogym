@@ -1,6 +1,6 @@
 /**
  * Socio
- * @author João
+ * @author Gustavo e João
  * @version 1.0
  */
 
@@ -30,6 +30,10 @@ public class Socio {
     }
     public String getTipoSocio() {
         return tipoSocio;
+    }
+
+    public String toString() {
+        return "Nome: " + nomeSocio + ", Numero: " + numeroSocio + ", Mail: " + mailSocio;
     }
 
 }

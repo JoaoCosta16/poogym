@@ -1,3 +1,9 @@
+/**
+ * Classe SocioIndividual
+ * @author Gustavo e João
+ * @version 1.0
+ */
+
 public class SocioIndividual extends Socio{
     private int anoNascimento;
 
@@ -8,5 +14,9 @@ public class SocioIndividual extends Socio{
 
      public int getAnoNascimento() {
         return anoNascimento;
+    }
+
+    public String toString() {
+        return super.toString() + ", Ano de Nascimento: " + anoNascimento;
     }
 }

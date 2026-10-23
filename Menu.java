@@ -1,10 +1,39 @@
+/**
+ * Menu do ginasio que permite ao utilizador interagir com o programa e realizar diversas operacoes relacionadas com socios, instrutores, atividades e marcacoes.
+ * @author Gustavo e João
+ * @version 2.0
+ */
+
 import java.util.Scanner;
     public class Menu {
     private Gestor gestor;
-    Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
     
     public Menu() {
         this.gestor = new Gestor();
+    }
+
+    private int lerInteiro(String mensagem) {
+        System.out.print(mensagem);
+        while(!sc.hasNextInt()) {
+            System.out.println("Erro: Deve introduzir um numero inteiro valido!");
+            sc.nextLine();
+            System.out.print(mensagem);
+        }
+        int valor = sc.nextInt();
+        sc.nextLine();
+        return valor;
+    }
+
+    private String lerString(String mensagem) {
+        System.out.print(mensagem);
+        String texto = sc.nextLine().trim();
+        while(texto.isEmpty()) {
+            System.out.println("Erro: O campo nao pode ficar vazio!");
+            System.out.print(mensagem);
+            texto = sc.nextLine().trim();
+        }
+        return texto;
     }
 
     public void iniciarMenu() {
@@ -24,8 +53,7 @@ import java.util.Scanner;
             System.out.println("0 - Sair");
             System.out.print("Escolha uma opcao: ");
 
-            opcao = sc.nextInt();
-            sc.nextLine(); // Limpar o buffer do scanner
+            opcao = lerInteiro("");
 
             switch (opcao) {
                 case 1:
@@ -38,7 +66,7 @@ import java.util.Scanner;
                     //registarAtividade();
                     break;
                 case 4:
-                    //listarSocios();
+                    listarSocios();
                     break;
                 case 5:
                     //listarAtividades();
@@ -71,37 +99,24 @@ import java.util.Scanner;
         Socio novoSocio = null;
         System.out.println("---Registar Socio---");
         
-        System.out.print("Nome: ");
-        String nomeSocio = sc.nextLine();
-
-        System.out.print("Numero: ");
-        int numeroSocio = sc.nextInt();
-
-        sc.nextLine(); //limpar buffer
-
-        System.out.print("Email: ");
-        String email = sc.nextLine();
-
-        System.out.print("Introduza o numero correspondente ao seu tipo de Socio: (0 - Individual | 1 - Empresa)");
-        int tipo = sc.nextInt();
-        sc.nextLine(); //limpar buffer
+        String nomeSocio = lerString("Nome: ");
+        int numeroSocio = lerInteiro("Numero: ");
+        String email = lerString("Email: ");
+        int tipo = lerInteiro("Introduza o numero correspondente ao seu tipo de Socio (0 - Individual | 1 - Empresa): ");
 
         switch (tipo) {
             case 0:
                 System.out.println("--Socio Individual Escolhido--");
-                System.out.print("Ano de nascimento: ");
-                int ano = sc.nextInt();
+                int ano = lerInteiro("Ano de nascimento: ");
                 novoSocio = new SocioIndividual(nomeSocio, numeroSocio, email, ano);
 
                 break;
             case 1: 
                 System.out.println("--Socio Empresa Escolhido--");
 
-                System.out.print("Nome da empresa: ");
-                String nomeEmpresa = sc.nextLine();
+                String nomeEmpresa = lerString("Nome da empresa: ");
 
-                System.out.print("NIF da empresa: ");
-                int NIF = sc.nextInt();
+                int NIF = lerInteiro("NIF da empresa: ");
 
                 novoSocio = new SocioEmpresa(nomeSocio, numeroSocio, email, NIF ,nomeEmpresa);
 
@@ -121,14 +136,11 @@ import java.util.Scanner;
     public void registarInstrutor() {
         System.out.println("---Registar Instrutor---");
 
-        System.out.print("Nome: ");
-        String nome = sc.nextLine();
+        String nome = lerString("Nome: ");
 
-        System.out.print("Genero: ");
-        String genero = sc.nextLine();
+        String genero = lerString("Genero: ");
 
-        System.out.print("Formacao (Cursos e Formacoes):");
-        String formacao = sc.nextLine();
+        String formacao = lerString("Formacao (Cursos e Formacoes):");
 
         Instrutor instrutor = new Instrutor(nome, genero, formacao);
 
@@ -136,6 +148,17 @@ import java.util.Scanner;
             System.out.println("Instrutor registado com sucesso");
         } else {
             System.out.println("Erro ao registar o instrutor");
+        }
+    }
+
+    public void listarSocios() {
+        System.out.println("---Lista de Socios---");
+        if (gestor.getSocios().isEmpty()) {
+            System.out.println("Nao existem socios registados.");
+            return;
+        }
+        for (Socio s : gestor.getSocios()) {
+            System.out.println(s.toString());
         }
     }
 }
