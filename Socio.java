@@ -10,6 +10,15 @@ public class Socio {
     private String mailSocio;
     private String tipoSocio;
     private int desconto;
+    
+    /**
+     * Cria socio individual.
+     * @param nomeSocio nome do socio
+     * @param numeroSocio numero unico do socio
+     * @param mailSocio e-mail do socio
+     * @param tipoSocio tipo de socio
+     * @param desconto desconto de socio 
+     */
 
     public Socio(String nomeSocio,int numeroSocio,String mailSocio,String tipoSocio, int desconto){
         this.nomeSocio = nomeSocio;
@@ -19,31 +28,43 @@ public class Socio {
         this.desconto = desconto;
     }
 
-    protected void setDesconto(int desconto) {
-    this.desconto = desconto;
-    }
-
-    public String getNomeSocio(){
+     /**
+     * Obtem o nome do socio.
+     * @return nome do socio
+     */
+    public String getNomeSocio() {
         return nomeSocio;
     }
-
-    public int getNumeroSocio(){
+ 
+    /**
+     * Obtem o numero do socio.
+     * @return numero do socio
+     */
+    public int getNumeroSocio() {
         return numeroSocio;
     }
-
-    public String getMailSocio(){
+ 
+    /**
+     * Obtem o e-mail do socio.
+     * @return e-mail do socio
+     */
+    public String getMailSocio() {
         return mailSocio;
     }
-    public String getTipoSocio() {
-        return tipoSocio;
-    }
-
+ 
+    /**
+     * Obtem a percentagem de desconto do socio.
+     * @return desconto em percentagem
+     */
     public int getDesconto() {
         return desconto;
     }
-
+ 
+    /**
+     * Devolve a descricao textual do socio.
+     * @return texto com os dados do socio
+     */
     public String toString() {
-        return "Nome: " + nomeSocio + ", Numero: " + numeroSocio + ", Mail: " + mailSocio;
+        return "Nome: " + nomeSocio + ", Numero: " + numeroSocio + ", Mail: " + mailSocio + ",Tipo" + tipoSocio + ", Desconto: " + desconto + "%";
     }
-
 }
