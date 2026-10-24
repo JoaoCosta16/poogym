@@ -12,7 +12,6 @@ public class Gestor {
      */
     private ArrayList<Socio> socios;
     private ArrayList<Instrutor> instrutores;
-    private ArrayList<Atividades> atividades;
 
     /**
      * Construtor da classe Gestor
@@ -21,7 +20,6 @@ public class Gestor {
     public Gestor(){
         socios = new ArrayList<>();
         instrutores = new ArrayList<>();
-        atividades = new ArrayList<>();
     }
 
     /**
@@ -33,6 +31,7 @@ public class Gestor {
     public boolean existeSocio(int numeroSocio) {
         for (Socio s : socios) {
             if (s.getNumeroSocio() == numeroSocio) {
+                System.out.println("O numero inserido ja se encontra registado");
                 return true;
             }   
         }
@@ -70,6 +69,7 @@ public class Gestor {
     public boolean existeInstrutor(String nomeInstrutor) {
         for (Instrutor i : instrutores) {
             if (i.getNomeInstrutor().equals(nomeInstrutor)) {
+                System.err.println("O nome inserido ja se encontra registado");
                 return true;
             }
         }
@@ -98,51 +98,6 @@ public class Gestor {
         return instrutores;
     }
 
-    /**
-     * Adiciona uma nova atividade a lista caso esta seja valida
-     * @param novaAtividade o objeto da Classe Atividades a adicionar
-     * @return true se a insercao tiver sucesso e false caso contrario
-     */
 
-    public boolean adicionarAtividade(Atividades novaAtividade) {
-        if (novaAtividade == null) {
-            return false;
-        }
-        atividades.add(novaAtividade);
-        return true;
-    }
-
-    /**
-     * Obtem a lista com todas as atividades registadas no ginasio
-     * @return
-     */
-    public ArrayList<Atividades> getAtividades() {
-        return atividades;
-    }
-
-    public void carregarDados() {
-        Instrutor i1 = new Instrutor("Carlos Silva", "M", "Educacao Fisica");
-        Instrutor i2 = new Instrutor("Ana Maria", "F", "Curso PT");
-        Instrutor i3 = new Instrutor("Pedro Miguel", "M", "Curso de Cross Fit");
-
-        this.adicionarInstrutor(i1);
-        this.adicionarInstrutor(i2);
-        this.adicionarInstrutor(i3);
-
-        SocioIndividual s1 = new SocioIndividual("Joao Santos", 101, "joao@gmail.com", 2010); // Menor (<18)
-        SocioIndividual s2 = new SocioIndividual("Maria Luisa", 102, "maria@gmail.com", 1995); // Adulto
-        SocioIndividual s3 = new SocioIndividual("Antonio Dias", 103, "antonio@gmail.com", 1955); // Sénior (>=65)
-
-        SocioEmpresa s4 = new SocioEmpresa("Rita Ramos", 201, "rita@gmail.com", 501234567, "TechSolutions");
-        SocioEmpresa s5 = new SocioEmpresa("Bernardo Cruz", 202, "bcruz@gmail.com", 509876543, "InovSoft");
-        SocioEmpresa s6 = new SocioEmpresa("Sofia Ferreira", 203, "sofia@gmail.com", 505555555, "GlobalConsult");
-
-        this.adicionarSocio(s1);
-        this.adicionarSocio(s2);
-        this.adicionarSocio(s3);
-        this.adicionarSocio(s4);
-        this.adicionarSocio(s5);
-        this.adicionarSocio(s6);
-    }
 
 }
