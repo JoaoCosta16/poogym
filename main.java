@@ -5,9 +5,12 @@
  */
 
 public class main {
+
+    /**
+     * arranca a aplicacao e apresenta o menu
+     * @param args argumentos da linha de comandos (nao utilizados)
+     */
     public static void main(String[] args) {
-        
-        Gestor gestor = new Gestor();
         Menu menu = new Menu();
         menu.iniciarMenu();
     }
