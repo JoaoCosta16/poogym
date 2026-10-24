@@ -12,7 +12,7 @@ public class Socio {
     private int desconto;
     
     /**
-     * Cria socio individual.
+     * cria socio individual
      * @param nomeSocio nome do socio
      * @param numeroSocio numero unico do socio
      * @param mailSocio e-mail do socio
@@ -29,7 +29,7 @@ public class Socio {
     }
 
      /**
-     * Obtem o nome do socio.
+     * obtem o nome do socio
      * @return nome do socio
      */
     public String getNomeSocio() {
@@ -37,7 +37,7 @@ public class Socio {
     }
  
     /**
-     * Obtem o numero do socio.
+     * obtem o numero do socio
      * @return numero do socio
      */
     public int getNumeroSocio() {
@@ -45,7 +45,7 @@ public class Socio {
     }
  
     /**
-     * Obtem o e-mail do socio.
+     * obtem o e-mail do socio
      * @return e-mail do socio
      */
     public String getMailSocio() {
@@ -53,7 +53,7 @@ public class Socio {
     }
  
     /**
-     * Obtem a percentagem de desconto do socio.
+     * obtem o desconto do socio
      * @return desconto em percentagem
      */
     public int getDesconto() {
@@ -61,7 +61,7 @@ public class Socio {
     }
  
     /**
-     * Devolve a descricao textual do socio.
+     * devolve a descricao do socio
      * @return texto com os dados do socio
      */
     public String toString() {

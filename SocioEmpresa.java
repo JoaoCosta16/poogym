@@ -1,7 +1,7 @@
 /**
- * Classe SocioEmpresa
+ * SocioEmpresa
  * @author Gustavo e João
- * @version 1.0
+ * @version 3.0
  */
 
 public class SocioEmpresa extends Socio{
@@ -10,7 +10,7 @@ public class SocioEmpresa extends Socio{
   
 
     /**
-     * Cria socio empresa.
+     * cria socio empresa
      * @param nomeSocio nome do socio
      * @param numeroSocio numero unico do socio
      * @param mailSocio e-mail do socio
@@ -25,7 +25,7 @@ public class SocioEmpresa extends Socio{
     }
 
     /**
-     * Obtem o NIF da empresa.
+     * obtem o NIF da empresa
      * @return NIF da empresa
      */
     public int getNifEmpresa() {
@@ -33,7 +33,7 @@ public class SocioEmpresa extends Socio{
     }
  
     /**
-     * Obtem o nome da empresa.
+     * obtem o nome da empresa
      * @return nome da empresa
      */
     public String getNomeEmpresa() {
@@ -41,8 +41,8 @@ public class SocioEmpresa extends Socio{
     }
  
     /**
-     * Devolve a descricao textual do socio empresa.
-     * @return texto com os dados do socio
+     * devolve a descricao socio empresa.
+     * @return texto com os dados do socio e empresa
      */
     
     public String toString() {

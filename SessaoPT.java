@@ -1,36 +1,53 @@
-/**
- * Classe SessaoPT
- * @author Gustavo e João
- * @version 2.0
- */
 import java.time.LocalDateTime;
 
+/**
+ * representa uma sessao de personal training com um nivel de treino
+ * @author Gustavo e João
+ * @version 3.0
+ */
 public class SessaoPT extends Atividades {
     private String nivelTreino;
-    private double custoBase;
 
-    public SessaoPT(String nomeAtividade, String instrutorResponsavel, LocalDateTime horarioAtividade, double duracaoAtividade, String nivelTreino, double custoBase) {
-        super(nomeAtividade, instrutorResponsavel, horarioAtividade, duracaoAtividade);
+    /**
+     * cria uma sessao de personal training
+     * @param nomeAtividade nome da sessao
+     * @param instrutor instrutor responsavel
+     * @param inicio data e hora de inicio
+     * @param duracao duracao em minutos
+     * @param nivelTreino Iniciação, Intermédio ou Avançado
+     */
+    public SessaoPT(String nomeAtividade, Instrutor instrutor, LocalDateTime inicio, int duracao, String nivelTreino) {
+        super(nomeAtividade, instrutor, inicio, duracao, calcularCustoBase(nivelTreino));
         this.nivelTreino = nivelTreino;
-        this.custoBase = CalcularCustoBase(nivelTreino);
     }
 
+    /**
+     * devolde o nivel treino
+     * @return nivel de treino
+     */
     public String getNivelTreino() {
         return nivelTreino;
     }
 
-    public double getCustoBase(){
-        return custoBase;
-    }
-
-    private double CalcularCustoBase(String nivelString){
-        if (nivelString.equals("Iniciação")) {
+     /**
+     * da o valor de cada aula
+     * @return custo base
+     */
+    private static double calcularCustoBase(String nivelTreino) {
+        if (nivelTreino.equals("Iniciação")) {
             return 18.00;
         }
-        if (nivelString.equals(" Intermédio")) {
+        if (nivelTreino.equals("Intermédio")) {
             return 22.00;
         }
-
         return 28.00;
+    }
+
+    /**
+     * devolve a descricao da sessaopt
+     * @return texto com os dados da sessao
+     */
+    public String toString() {
+        return "[Sessao PT] " + super.toString() + ", Nivel: " + nivelTreino;
     }
 }

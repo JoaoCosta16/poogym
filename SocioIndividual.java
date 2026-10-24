@@ -1,6 +1,6 @@
 import java.time.LocalDate;
 /**
- * Classe SocioIndividual
+ * SocioIndividual
  * @author Gustavo e João
  * @version 1.0
  */
@@ -9,7 +9,7 @@ public class SocioIndividual extends Socio{
     private int anoNascimento;
 
     /**
-     * Cria socio individual.
+     * cria socio individual
      * @param nomeSocio nome do socio
      * @param numeroSocio numero unico do socio
      * @param mailSocio e-mail do socio
@@ -24,7 +24,7 @@ public class SocioIndividual extends Socio{
     }
 
      /**
-     * Obtem o ano de nascimento.
+     * obtem o ano de nascimento
      * @return ano de nascimento
      */
 
@@ -33,11 +33,11 @@ public class SocioIndividual extends Socio{
     }
     
     /**
-     * Através do ano calcula o desconto.
+     * através do @param anoNascimento calcula o desconto
      * @return percentagem de desconto
      */
     
-    public static int calcularDesconto(int anoNascimento){
+    private static int calcularDesconto(int anoNascimento){
         int idade = LocalDate.now().getYear() - anoNascimento;
         if (idade < 18) {
             return 10;
@@ -49,7 +49,7 @@ public class SocioIndividual extends Socio{
     }
    
     /**
-     * Devolve a descricao textual do socio individual.
+     * devolve a descricao textual do socio individual
      * @return texto com os dados do socio
      */
 
