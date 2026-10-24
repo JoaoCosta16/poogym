@@ -8,13 +8,11 @@ import java.time.LocalDateTime;
 public class AulaGrupo extends Atividades{
     private String modalidade;
     private int capacidadeMaxima;
-    private double custoBase;
 
     public AulaGrupo(String nomeAtividade, String instrutorResponsavel, LocalDateTime horarioAtividade, double duracaoAtividade, String modalidade, int capacidadeMaxima, double custoBase) {
-        super(nomeAtividade, instrutorResponsavel, horarioAtividade, duracaoAtividade);
+        super(nomeAtividade, instrutorResponsavel, horarioAtividade, duracaoAtividade, calcularCustoBase(modalidade));
         this.modalidade = modalidade;
         this.capacidadeMaxima = capacidadeMaxima;
-        this.custoBase = calcularCustoBase(modalidade);
     }
 
     public String getModalidade() {
@@ -25,11 +23,7 @@ public class AulaGrupo extends Atividades{
         return capacidadeMaxima;
     }
 
-    public double getCustoBase(){
-        return custoBase;
-    }
-
-    private double calcularCustoBase(String modalidade) {
+    private static double calcularCustoBase(String modalidade) {
         if (modalidade.equals("Yoga")) {
             return 8.00;
         }

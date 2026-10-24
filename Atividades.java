@@ -10,12 +10,14 @@ public class Atividades {
     private String instrutorResponsavel;
     private LocalDateTime horarioAtividade;
     private double duracaoAtividade;
+    private double custoBase;
 
-    public Atividades(String nomeAtividade, String instrutorResponsavel, LocalDateTime horarioAtividade, double duracaoAtividade) {
+    public Atividades(String nomeAtividade, String instrutorResponsavel, LocalDateTime horarioAtividade, double duracaoAtividade, double custoBase) {
         this.nomeAtividade = nomeAtividade;
         this.instrutorResponsavel = instrutorResponsavel;
         this.horarioAtividade = horarioAtividade;
         this.duracaoAtividade = duracaoAtividade;
+        this.custoBase = custoBase;
     }
 
     public String getNomeAtividade() {
@@ -32,5 +34,9 @@ public class Atividades {
 
     public double getDuracaoAtividade() {
         return duracaoAtividade;
+    }
+
+    public double getCustoBase() {
+        return custoBase;
     }
 }
