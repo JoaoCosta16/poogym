@@ -1,14 +1,15 @@
+import java.util.ArrayList;
+
 /**
  * Classe Gestor
  * @author Gustavo e João
  * @version 2.0
  */
 
-import java.util.ArrayList;
 public class Gestor {
 
     /**
-     * Listas dinamica que contem todos os socios e instrutores registados no ginasio
+     * Listas dinamicas que contem todos os socios e instrutores registados no ginasio
      */
     private ArrayList<Socio> socios;
     private ArrayList<Instrutor> instrutores;
@@ -25,13 +26,11 @@ public class Gestor {
     /**
      * Verifica se ja existe um socio registado com o numero indicado 
      * @param numeroSocio o valor a verificar se ja existe
-     * @return true se o socio ja exister e false caso contrario
+     * @return true se o socio ja existir e false caso contrario
      */
-
     public boolean existeSocio(int numeroSocio) {
         for (Socio s : socios) {
             if (s.getNumeroSocio() == numeroSocio) {
-                System.out.println("O numero inserido ja se encontra registado");
                 return true;
             }   
         }
@@ -43,7 +42,6 @@ public class Gestor {
      * @param novoSocio o objeto da Classe Socio a adicionar
      * @return true se a insercao tiver sucesso e false caso contrario
      */
-
     public boolean adicionarSocio(Socio novoSocio) {
         if (novoSocio == null || existeSocio(novoSocio.getNumeroSocio())) {
             return false;
@@ -53,23 +51,21 @@ public class Gestor {
     }
 
     /**
-     * Obtem a lista com todos os socios registados no ginasio
-     * @return
+     * Obtem uma copia da lista com todos os socios registados no ginasio
+     * @return lista de socios
      */
     public ArrayList<Socio> getSocios() {
-        return socios;
+        return new ArrayList<>(socios);
     }
 
     /**
      * Verifica se ja existe um instrutor registado com o nome indicado 
      * @param nomeInstrutor o nome a verificar se ja existe
-     * @return true se o instrutor ja exister e false caso contrario
+     * @return true se o instrutor ja existir e false caso contrario
      */
-
     public boolean existeInstrutor(String nomeInstrutor) {
         for (Instrutor i : instrutores) {
             if (i.getNomeInstrutor().equals(nomeInstrutor)) {
-                System.err.println("O nome inserido ja se encontra registado");
                 return true;
             }
         }
@@ -77,11 +73,10 @@ public class Gestor {
     }
 
     /**
-     * Adiciona um novo intrutor a lista caso este seja valido
-     * @param instrutor o objeto da Classe instrutor a adicionar
-     * @returninstrutor true se a insercao tiver sucesso e false caso contrario
+     * Adiciona um novo instrutor a lista caso este seja valido
+     * @param novoInstrutor o objeto da Classe Instrutor a adicionar
+     * @return true se a insercao tiver sucesso e false caso contrario
      */
-
     public boolean adicionarInstrutor(Instrutor novoInstrutor) {
         if (novoInstrutor == null || existeInstrutor(novoInstrutor.getNomeInstrutor())) {
             return false;
@@ -91,13 +86,10 @@ public class Gestor {
     }
 
     /**
-     * Obtem a lista com todos os instrutores registados no ginasio
-     * @return
+     * Obtem uma copia da lista com todos os instrutores registados no ginasio
+     * @return lista de instrutores
      */
     public ArrayList<Instrutor> getInstrutores() {
-        return instrutores;
+        return new ArrayList<>(instrutores);
     }
-
-
-
 }

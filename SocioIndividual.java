@@ -18,7 +18,7 @@ public class SocioIndividual extends Socio{
      * @param anoNascimento ano de nascimento do socio
      */
 
-    public SocioIndividual(String nomeSocio, int numeroSocio, String mailSocio, String tipoSocio, int desconto, int anoNascimento){
+    public SocioIndividual(String nomeSocio, int numeroSocio, String mailSocio, int anoNascimento){
         super(nomeSocio, numeroSocio, mailSocio,"INDIVIDUAL", calcularDesconto(anoNascimento));
         this.anoNascimento = anoNascimento;
     }
