@@ -1,15 +1,19 @@
+import java.time.LocalDateTime;
+import java.util.Scanner;
+
 /**
  * Menu do ginasio que permite ao utilizador interagir com o programa e realizar diversas operacoes relacionadas com socios, instrutores, atividades e marcacoes.
  * @author Gustavo e João
- * @version 2.0
+ * @version 3.0
  */
-
-import java.time.LocalDateTime;
-import java.util.Scanner;
 
 public class Menu {
     private Gestor gestor;
     private Scanner sc;
+
+    /**
+     * Constroi o menu e inicializa o motor de gestao, do scanner e carrega dados predefinidos
+     */
     public Menu() {
         this.gestor = new Gestor();
         this.sc = new Scanner(System.in);
@@ -17,6 +21,11 @@ public class Menu {
         this.gestor.carregarDados();
     }
 
+    /**
+     * Solicita e valida a introducao de um numero inteiro
+     * @param mensagem Texto descritivo que serve como output para o utilizador
+     * @return valor introduzido pelo utilizador
+     */
     private int lerInteiro(String mensagem) {
         System.out.print(mensagem);
         while(!sc.hasNextInt()) {
@@ -29,6 +38,11 @@ public class Menu {
         return valor;
     }
 
+    /**
+     * Solicita e valida a introducao de uma string nao vazio
+     * @param mensagem Texto descritivo que serve como output para o utilizador
+     * @return string introduzida pelo utilizador
+     */
     private String lerString(String mensagem) {
         System.out.print(mensagem);
         String texto = sc.nextLine().trim();
@@ -40,6 +54,10 @@ public class Menu {
         return texto;
     }
 
+    /**
+     * Solicita uma data e hora
+     * @return o objeto LocalDateTime correspondente aos valores introduzidos
+     */
     private LocalDateTime lerDataHora() {
         System.out.println("--- Inserir Data e Hora ---");
         int dia = lerInteiro("Dia: ");
@@ -51,6 +69,9 @@ public class Menu {
         return LocalDateTime.of(ano, mes, dia, hora, minuto);
     }
 
+    /**
+     * Inicia o ciclo principal da aplicacao e apresenta as opcoes disponiveis
+     */
     public void iniciarMenu() {
         int opcao = -1;
         do {
@@ -84,7 +105,7 @@ public class Menu {
                     listarSocios();
                     break;
                 case 5:
-                    //listarAtividades();
+                    listarAtividades();
                     break;
                 case 6:
                     //criarMarcacao();
@@ -110,6 +131,9 @@ public class Menu {
         } while (opcao != 0);
     }
 
+    /**
+     * Recolhe os dados fornecidos pelo utilizador para a criacao de um novo socio
+     */
     public void registarSocio() {
         Socio novoSocio = null;
         System.out.println("---Registar Socio---");
@@ -148,6 +172,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Recolhe os dados fornecidos pelo utilizador para a criacao de um novo instrutor
+     */
     public void registarInstrutor() {
         System.out.println("---Registar Instrutor---");
 
@@ -166,26 +193,65 @@ public class Menu {
         }
     }
 
+    /**
+     * Recolhe os dados fornecidos pelo utilizador para a criacao de uma nova atividade
+     */
     public void registarAtividade() {
         System.out.println("---Registar Atividade---");
 
-        String nome = lerString("Nome da atividade: ");
+        String nomeAtividade = lerString("Nome da atividade a registar: ");
 
-        String descricao = lerString("Descricao da atividade: ");
+        String nomeInstrutorResponsavel = lerString("Instrutor responsavel: ");
 
-        LocalDateTime horario = lerDataHora();
-        
+        Instrutor instrutor = gestor.procurarInstrutor(nomeInstrutorResponsavel);
+
+        if (instrutor == null) {
+            System.out.println("Erro: Instrutor nao encontrado no sistema!");
+            return;
+        }
+
+        System.out.println("Data e hora da atividade:");
+        LocalDateTime dataHora = lerDataHora();
+
         int duracao = lerInteiro("Duracao da atividade (em minutos): ");
 
-        Atividades atividade = new Atividades(nome, descricao, horario, duracao);
+        int tipo = lerInteiro("Introduza o numero correspondente ao tipo de Atividade (0 - Aula de Grupo | 1 - Personal Training): ");
 
-        if (gestor.adicionarAtividade(atividade)) {
-            System.out.println("Atividade registada com sucesso");
-        } else {
-            System.out.println("Erro ao registar a atividade");
+        Atividades atividade = null;
+
+        switch (tipo) {
+            case 0:
+                System.out.println("--Aula de Grupo Escolhida--");
+
+                String modalidade = lerString("Modalidades disponiveis: Yoga, Spinning, Zumba, CrossFit. Escolha uma modalidade: ");
+
+                int capacidadeMaxima = lerInteiro("Capacidade maxima de participantes: ");
+
+                atividade = new AulaGrupo(nomeAtividade, instrutor, dataHora, duracao, modalidade, capacidadeMaxima);
+
+                break;
+            case 1: 
+                System.out.println("--Sessao de Personal Training Escolhida--");
+
+                String nivel = lerString("Niveis disponiveis: iniciacao, intermedio, avancado. Escolha o nivel do treino: ");
+
+                atividade = new SessaoPT(nomeAtividade, instrutor, dataHora, duracao, nivel);
+                break;
+            default:
+                System.out.println("Opcao invalida!");
+        }
+        if (atividade != null) {
+            if (gestor.adicionarAtividade(atividade)) {
+                System.out.println("Atividade registada com sucesso");
+            } else {
+                System.out.println("Erro ao registar a atividade");
+            }
         }
     }
 
+    /**
+     * Apresenta no terminal todos os socios registados no sistema
+     */
     public void listarSocios() {
         System.out.println("---Lista de Socios---");
         if (gestor.getSocios().isEmpty()) {
@@ -194,6 +260,17 @@ public class Menu {
         }
         for (Socio s : gestor.getSocios()) {
             System.out.println(s.toString());
+        }
+    }
+
+    public void listarAtividades() {
+        System.out.println("---Lista de Atividades---");
+        if (gestor.getAtividades().isEmpty()) {
+            System.out.println("Nao existem atividades registados.");
+            return;
+        }
+        for (Atividades a : gestor.getAtividades()) {
+            System.out.println(a.toString());
         }
     }
 }

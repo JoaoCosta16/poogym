@@ -50,7 +50,11 @@ public class AulaGrupo extends Atividades {
         if (modalidade.equals("Zumba")) {
             return 8.50;
         }
-        return 12.00;
+        if (modalidade.equals("CrossFit")) {
+            return 12.00;
+        }
+        return 0.0;
+        
     }
  
     /**
