@@ -1,0 +1,164 @@
+================================================================================
+                    POOGYM - ANÁLISE DE ESTADO DA FASE 1
+================================================================================
+Data da Análise: Outubro de 2026
+Objetivo: Identificar o estado do código (Completo, Quase Completo, Por Fazer)
+          para a conclusão total da Fase 1 do projeto POOGym.
+================================================================================
+
+--------------------------------------------------------------------------------
+1. RESUMO EXECUTIVO
+--------------------------------------------------------------------------------
+- Compilação do Código Java: COM SUCESSO (0 erros de compilação com javac).
+- Geração de Javadoc: COM ERROS (2 erros e 4 avisos bloqueiam a geração limpa).
+- Funcionalidades Obrigatórias (1 a 10):
+  * Funcionalidades 1 a 5: IMPLEMENTADAS (com pequenos detalhes a afinar).
+  * Funcionalidades 6 a 10: POR IMPLEMENTAR (comentadas no Menu, métodos ausentes no Gestor).
+- Dados de Demonstração (carregarDados):
+  * Sócios: 6 criados (3 individuais + 3 empresa) -> REQUISITO CUMPRIDO.
+  * Instrutores: 3 criados -> REQUISITO CUMPRIDO.
+  * Atividades: 8 criadas (4 aulas de grupo + 4 sessões PT) -> REQUISITO CUMPRIDO.
+  * Marcações: 0 criadas -> REQUISITO EM FALTA (o enunciado exige pelo menos 6 marcações).
+
+
+================================================================================
+2. O QUE ESTÁ COMPLETO [OK]
+================================================================================
+
+[x] Estrutura Base de Herança e Encapsulamento:
+    - Socio.java: atributos privados (nomeSocio, numeroSocio, mailSocio, tipoSocio, desconto), construtor, getters e toString().
+    - SocioEmpresa.java: herança correta de Socio, dados da empresa (nifEmpresa, nomeEmpresa), desconto fixo de 20%, toString() formatado.
+    - Marcacao.java: associação entre Socio, Atividades e data/hora. Cálculos de preço base, poupança e preço final no construtor. Getters e toString() completos.
+
+[x] Funcionalidade 1 - Registar Sócio:
+    - Menu.java: pede os dados ao utilizador, permite escolher Individual ou Empresa, valida campos e adiciona ao gestor.
+    - Gestor.java: valida duplicados através de existeSocio(int numeroSocio).
+
+[x] Funcionalidade 2 - Registar Instrutor:
+    - Menu.java e Gestor.java: pede nome, género e formação, valida se já existe pelo nome e adiciona à coleção.
+
+[x] Funcionalidade 4 - Listar Sócios:
+    - Menu.java e Gestor.java: lista todos os sócios ou informa se a lista estiver vazia.
+
+[x] Funcionalidade 5 - Listar Atividades:
+    - Menu.java e Gestor.java: lista todas as atividades ou informa se a lista estiver vazia.
+
+
+================================================================================
+3. O QUE ESTÁ QUASE COMPLETO [AVISOS E AJUSTES NECESSÁRIOS]
+================================================================================
+
+[!] 2. ERROS DE COMPILAÇÃO NO JAVADOC:
+    - SocioIndividual.java: linhas 16 e 17 têm tags '@param tipoSocio' e '@param desconto' que não existem nos parâmetros do construtor. Isto faz o comando 'javadoc' falhar com 2 erros.
+    - Gestor.java: linha 60 ('@param nomeInstrutor') e linha 129 ('@return') estão sem descrição de texto (geram warnings).
+    - main.java: aviso sobre construtor por defeito sem comentário.
+    * NOTA: É obrigatório entregar o ZIP do Javadoc na Fase 1, pelo que o Javadoc deve compilar com 0 erros.
+
+[!] 3. IDENTIFICAÇÃO DE TIPOS SEM USAR INSTANCEOF (Regra Crítica do Enunciado):
+    - O enunciado proíbe expressamente o uso de 'instanceof' e 'class.getName()' (sob forte penalização na nota).
+    - Em Atividades.java: NÃO existe nenhum atributo de tipo (ex: 'tipoAtividade') nem método identificador. É necessário adicionar uma forma de saber se é Aula de Grupo ou Sessão de PT (por exemplo, passar um tipo no super() ou um getter específico), para permitir a contagem na Funcionalidade 8 sem violar as regras de OOP.
+
+[!] 4. CLASSE Instrutor.java:
+    - Falta o método 'toString()' na classe Instrutor. Embora tenha getters, ter um toString() próprio é uma boa prática e facilita listagens e debugging.
+
+[!] 5. COMPARAÇÃO DE STRINGS NAS ATIVIDADES (Sensibilidade a Maiúsculas/Minúsculas):
+    - Em AulaGrupo.java (calcularCustoBase) e SessaoPT.java (calcularCustoBase), a verificação é feita com .equals("Yoga"), .equals("Iniciacao"), etc.
+    - Se o utilizador escrever em minúsculas ("yoga", "iniciacao") ou com acentos ("Iniciação"), o custo base fica 0.0 EUR!
+    - Solução recomendada: usar '.equalsIgnoreCase()' e aceitar variações comuns com/sem acento.
+
+[!] 6. DADOS DE DEMONSTRAÇÃO INCOMPLETOS:
+    - O método carregarDados() em Gestor.java carrega 3 instrutores, 6 sócios e 8 atividades, mas NÃO CARREGA NENHUMA MARCAÇÃO.
+    - O enunciado exige explicitamente para a Fase 1: pelo menos 6 sócios (3 de cada tipo), 8 atividades e 6 MARCAÇÕES pré-carregadas.
+
+[!] 7. CONVENÇÃO DE NOMES:
+    - main.java: o nome da classe é 'main' (com 'm' minúsculo). A convenção padrão de Java e a sugestão do guia é 'Main' (com 'M' maiúsculo).
+    - Atividades.java: o nome está no plural ('Atividades'), enquanto cada instância representa uma única atividade (sugestão no guia é 'Atividade'). Funciona perfeitamente, mas deve ser mantido consistente no UML e código.
+
+[!] 8. DETALHE VISUAL EM Socio.toString():
+    - Na linha 68 de Socio.java: ",Tipo" está sem espaço antes de Tipo. Deve ser ", Tipo: ".
+
+
+================================================================================
+4. O QUE ESTÁ POR FAZER [TODO] A NÍVEL DE CÓDIGO
+================================================================================
+
+Para concluir a Fase 1 a 100%, é necessário implementar as funcionalidades 6 a 10 no Gestor e no Menu:
+
+[ ] 1. FUNCIONALIDADE 6 - CRIAR MARCAÇÃO:
+    * No Gestor.java:
+      - Criar método 'public Socio procurarSocio(int numeroSocio)' (atualmente só existe existeSocio que devolve boolean).
+      - Criar método 'public Atividades procurarAtividade(String nomeAtividade)' para encontrar a atividade pretendida.
+      - Criar método 'public boolean adicionarMarcacao(Marcacao m)'.
+      - (Opcional/Recomendado): Verificar capacidade máxima se for Aula de Grupo (contar marcações já existentes para essa aula).
+    * No Menu.java:
+      - Descomentar a chamada 'criarMarcacao()' na opção 6 do menu.
+      - Implementar o método 'private void criarMarcacao()':
+        1. Pedir o número de sócio e verificar se existe (se não existir, dar mensagem de erro).
+        2. Pedir o nome da atividade (ou listar as atividades para seleção) e verificar se existe.
+        3. Pedir a data/hora da marcação (ou usar a data/hora já definida na atividade).
+        4. Instanciar o objeto Marcacao(socio, atividade, dataHora).
+        5. Adicionar a marcação ao Gestor.
+        6. Apresentar no ecrã o resumo da marcação com o custo base, desconto aplicado, poupança e preço final.
+
+[ ] 2. FUNCIONALIDADE 7 - LISTAR MARCAÇÕES:
+    * No Gestor.java:
+      - Criar método 'public ArrayList<Marcacao> getMarcacoes()'.
+      - Criar método 'public double calcularTotalFaturado()' que percorre todas as marcações e soma 'getPrecoFinal()'.
+    * No Menu.java:
+      - Descomentar 'listarMarcacoes()' na opção 7 do menu.
+      - Implementar o método 'private void listarMarcacoes()':
+        1. Verificar se existem marcações; caso contrário, informar o utilizador.
+        2. Percorrer as marcações e imprimir cada uma (dados do sócio, atividade, custo base, poupança e custo final).
+        3. Imprimir no fim o Total Faturado pelo ginásio em euros.
+
+[ ] 3. FUNCIONALIDADE 8 - RESUMO DE ATIVIDADES:
+    * No Gestor.java:
+      - Criar métodos de contagem (ou um método de resumo) que conte:
+        a) Sócios Individuais;
+        b) Sócios Empresa;
+        c) Aulas de Grupo;
+        d) Sessões de Personal Training.
+      * ATENÇÃO: Fazer a contagem através de atributos (ex: tipoSocio e tipoAtividade), NUNCA com 'instanceof'.
+    * No Menu.java:
+      - Descomentar 'resumoAtividades()' na opção 8 do menu.
+      - Implementar o método 'private void resumoAtividades()':
+        Apresentar as contagens com formatação clara (ex: "Sócios Individuais: X, Sócios Empresa: Y", "Aulas de Grupo: W, Sessões de PT: Z").
+
+[ ] 4. FUNCIONALIDADE 9 - MAIS POPULAR:
+    * No Gestor.java:
+      - Criar método 'public Atividades obterAtividadeMaisPopular()' (ou método que retorne a atividade e o número de marcações).
+      - Lógica: para cada atividade da lista de atividades, contar quantas marcações existem associadas a ela. Retornar a que tiver maior contagem.
+      - Tratar casos limite: lista de marcações vazia (retornar null) ou empate (pode retornar a primeira ou listar ambas).
+    * No Menu.java:
+      - Descomentar 'maisPopular()' na opção 9 do menu.
+      - Implementar o método 'private void maisPopular()':
+        Verificar se existem marcações; se sim, mostrar a atividade com maior procura e o respetivo número de inscrições.
+
+[ ] 5. FUNCIONALIDADE 10 - VALORES SÓCIO:
+    * No Gestor.java:
+      - Criar método 'public double calcularTotalGastoSocio(int numeroSocio)':
+        Soma o precoFinal de todas as marcações efetuadas pelo sócio indicado.
+      - Criar método 'public double calcularTotalPoupadoSocio(int numeroSocio)':
+        Soma a poupanca de todas as marcações efetuadas pelo sócio indicado.
+    * No Menu.java:
+      - Descomentar 'valoresSocio()' na opção 10 do menu.
+      - Implementar o método 'private void valoresSocio()':
+        1. Pedir o número de sócio ao utilizador.
+        2. Validar se o sócio existe no sistema (se não existir, emitir mensagem apropriada).
+        3. Apresentar o Valor Total Gasto (€) e o Valor Total Poupado (€).
+        4. Caso o sócio exista mas não tenha marcações, deve apresentar 0,00 € em ambos os valores.
+
+[ ] 6. CARREGAR 6 MARCAÇÕES NOS DADOS DE DEMONSTRAÇÃO:
+    * No Gestor.java (método carregarDados()):
+      - Criar e adicionar pelo menos 6 instâncias de Marcacao associando sócios e atividades existentes, para cumprir o requisito de demonstração da Fase 1.
+
+
+================================================================================
+5. ENTREGÁVEIS OBRIGATÓRIOS DA FASE 1 (CHECKLIST FINAL)
+================================================================================
+[ ] Código Java (.java) compilado e funcional (sem erros em tempo de execução).
+[ ] Javadoc compilado sem erros e exportado para ficheiro ZIP.
+[ ] Diagrama de Classes UML em formato PDF (sem classes abstratas nem polimorfismo).
+[ ] Relatório do Projeto em formato PDF.
+[ ] Ficheiros submetidos no InforEstudante dentro do prazo limite (25/10/2026).
+================================================================================

@@ -59,6 +59,14 @@ public class Socio {
     public int getDesconto() {
         return desconto;
     }
+
+    /**
+     * obtem o tipo de socio
+     * @return tipo de socio
+     */
+    public String getTipoSocio() {
+        return tipoSocio;
+    }
  
     /**
      * devolve a descricao do socio

@@ -263,6 +263,9 @@ public class Menu {
         }
     }
 
+    /**
+     * Apresenta no terminal todas as atividades registadas no sistema
+     */
     public void listarAtividades() {
         System.out.println("---Lista de Atividades---");
         if (gestor.getAtividades().isEmpty()) {

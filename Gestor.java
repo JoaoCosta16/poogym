@@ -25,6 +25,7 @@ public class Gestor {
         socios = new ArrayList<>();
         instrutores = new ArrayList<>();
         atividades = new ArrayList<>();
+        marcacoes = new ArrayList<>();
     }
 
     /**
