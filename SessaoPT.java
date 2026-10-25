@@ -1,7 +1,7 @@
 import java.time.LocalDateTime;
 
 /**
- * representa uma sessao de personal training com um nivel de treino
+ * Representa uma sessao de personal training com um nivel de treino
  * @author Gustavo e João
  * @version 3.0
  */

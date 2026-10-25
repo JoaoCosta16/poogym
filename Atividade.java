@@ -2,7 +2,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
  
 /**
- * representa uma atividade do ginasio com os dados comuns a aulas de grupo e sessoes de personal training
+ * Representa uma atividade do ginasio com os dados comuns a aulas de grupo e sessoes de personal training
  * @author Gustavo e João
  * @version 3.0
  */
