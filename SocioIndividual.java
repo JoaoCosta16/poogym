@@ -31,7 +31,8 @@ public class SocioIndividual extends Socio{
     }
     
     /**
-     * através do @param anoNascimento calcula o desconto
+     * calcula o desconto de um socio individual com base no ano de nascimento
+     * @param anoNascimento ano de nascimento do socio
      * @return percentagem de desconto
      */
     

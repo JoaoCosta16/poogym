@@ -73,7 +73,7 @@ public class Gestor {
     /**
      * Procura um instrutor na lista de instrutores pelo seu nome
      * @param nomeInstrutor nome do instrutor a procurar
-     * @return o objeto instrutor correspondente se este for encontrado e null caso contrarioS
+     * @return o objeto instrutor correspondente se este for encontrado e null caso contrario
      */
     public Instrutor procurarInstrutor(String nomeInstrutor) {
         for (Instrutor i : this.instrutores) {
@@ -126,7 +126,7 @@ public class Gestor {
 
     /**
      * Adiciona uma nova atividade a lista caso esta seja valida
-     * @param novaAtividade o objeto da Classe Atividades a adicionar
+     * @param novaAtividade o objeto da Classe Atividade a adicionar
      * @return true se a insercao tiver sucesso e false caso contrario
      */
     public boolean adicionarAtividade(Atividade novaAtividade) {
@@ -167,7 +167,7 @@ public class Gestor {
     
     /**
      * Conta o numero total de socios individuais e de empresa registados
-     * @return um array de inteiros onde o indice 0 representa o numero de socios individuas e 1 representa os de empresa
+     * @return um array de inteiros onde o indice 0 representa o numero de socios individuais e 1 representa os de empresa
      */
     public int[] contarSociosPorTipo() {
         int individuais = 0;
@@ -252,8 +252,8 @@ public class Gestor {
     }
 
     /**
-     * Determina a ou as atividades com o maior numero de marcacoes associoadas. Em caso de empate devolve todas as atividades que partilhem o maior numero de marcacoes
-     * @return Um lista com a ou as atividades mais populars, ou uma lista vazia caso nao existam marcacoes
+     * Determina a ou as atividades com o maior numero de marcacoes associadas. Em caso de empate devolve todas as atividades que partilhem o maior numero de marcacoes
+     * @return Uma lista com a ou as atividades mais populars, ou uma lista vazia caso nao existam marcacoes
      */
     public ArrayList<Atividade> calcularAtividadeMaisPopular() {
         ArrayList<Atividade> maisPopular = new ArrayList<>();

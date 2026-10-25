@@ -12,7 +12,7 @@ public class Socio {
     private int desconto;
     
     /**
-     * cria socio individual
+     * Construtor da classe Socio
      * @param nomeSocio nome do socio
      * @param numeroSocio numero unico do socio
      * @param mailSocio e-mail do socio

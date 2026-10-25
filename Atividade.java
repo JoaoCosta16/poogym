@@ -74,7 +74,7 @@ public class Atividade {
 
     /**
      * obtem o tipo de atividade
-     * @return tipo de socio
+     * @return tipo de atividade
      */
     public String getTipoAtividade() {
         return tipoAtividade;
