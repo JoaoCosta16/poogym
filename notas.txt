@@ -61,25 +61,6 @@ Objetivo: Identificar o estado do código (Completo, Quase Completo, Por Fazer)
 
 Para concluir a Fase 1 a 100%, é necessário implementar as funcionalidades 6 a 10 no Gestor e no Menu:
 
-[ ] 5. FUNCIONALIDADE 10 - VALORES SÓCIO:
-    * No Gestor.java:
-      - Criar método 'public double calcularTotalGastoSocio(int numeroSocio)':
-        Soma o precoFinal de todas as marcações efetuadas pelo sócio indicado.
-      - Criar método 'public double calcularTotalPoupadoSocio(int numeroSocio)':
-        Soma a poupanca de todas as marcações efetuadas pelo sócio indicado.
-    * No Menu.java:
-      - Descomentar 'valoresSocio()' na opção 10 do menu.
-      - Implementar o método 'private void valoresSocio()':
-        1. Pedir o número de sócio ao utilizador.
-        2. Validar se o sócio existe no sistema (se não existir, emitir mensagem apropriada).
-        3. Apresentar o Valor Total Gasto (€) e o Valor Total Poupado (€).
-        4. Caso o sócio exista mas não tenha marcações, deve apresentar 0,00 € em ambos os valores.
-
-[ ] 6. CARREGAR 6 MARCAÇÕES NOS DADOS DE DEMONSTRAÇÃO:
-    * No Gestor.java (método carregarDados()):
-      - Criar e adicionar pelo menos 6 instâncias de Marcacao associando sócios e atividades existentes, para cumprir o requisito de demonstração da Fase 1.
-
-
 ================================================================================
 5. ENTREGÁVEIS OBRIGATÓRIOS DA FASE 1 (CHECKLIST FINAL)
 ================================================================================

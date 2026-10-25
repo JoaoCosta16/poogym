@@ -138,7 +138,7 @@ public class Menu {
                     esperarEnter();
                     break;
                 case 10:
-                    //valoresSocio();
+                    valoresSocio();
                     esperarEnter();
                     break;
                 case 0:
@@ -321,7 +321,7 @@ public class Menu {
             return;
         }
         for (Socio s : gestor.getSocios()) {
-            System.out.println(s.toString());
+            System.out.println(s);
         }
     }
 
@@ -335,7 +335,7 @@ public class Menu {
             return;
         }
         for (Atividade a : gestor.getAtividades()) {
-            System.out.println(a.toString());
+            System.out.println(a);
         }
     }
 
@@ -349,7 +349,7 @@ public class Menu {
             return;
         }
         for (Marcacao m : gestor.getMarcacoes()) {
-            System.out.println(m.toString());
+            System.out.println(m);
         }
         double totalFaturado = gestor.calcularTotalFaturado();
         System.out.printf("Total Faturado: %.2f EUR\n", totalFaturado);
@@ -390,5 +390,30 @@ public class Menu {
                 System.out.println(a);
             }
         }      
+    }
+    /**
+     * Pede ao utilizador o numero de um socio e apresenta no terminal as despesas e valores poupados pelo socio
+     */
+    private void valoresSocio() {
+        System.out.println("---Valores Socio---");
+
+        if (gestor.getSocios().isEmpty()) {
+            System.out.println("Nao existem socios registados no sistema.");
+            return;
+        }
+
+        int numSocio = lerInteiro("Indique o numero de um socio: ");
+        Socio socio = gestor.procurarSocio(numSocio);
+
+        if (socio == null) {
+            System.out.println("Erro: socio com o numero " + numSocio + " nao encontrado!");
+            return;
+        }
+        double[] valores = gestor.calcularValoresSocio(socio);
+        double totalGasto = valores[0];
+        double totalPoupado = valores[1];
+        System.out.println(socio);
+        System.out.printf("Total gasto: %.2f EUR\n", totalGasto);
+        System.out.printf("Total poupado: %.2f EUR\n", totalPoupado);
     }
 }

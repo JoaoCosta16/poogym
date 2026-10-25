@@ -231,6 +231,27 @@ public class Gestor {
     }
 
     /**
+     * Calcula o valor total gasto e o valor total poupado por um socio
+     * @param socio o socio a consultar
+     * @return um array de doubles onde o indice 0 representa o valor gasto por um socio e 1 representa o valor poupado
+     */
+    public double[] calcularValoresSocio(Socio socio) {
+        double totalGasto = 0.0;
+        double totalPoupado = 0.0;
+
+        if (socio != null) {
+            for (Marcacao m : marcacoes) {
+                if (m.getSocio().getNumeroSocio() == socio.getNumeroSocio()) {
+                    totalGasto += m.getPrecoFinal();
+                    totalPoupado += m.getPoupanca();
+                }
+            }
+        }
+
+        return new double[] {totalGasto, totalPoupado};
+    }
+
+    /**
      * Determina a ou as atividades com o maior numero de marcacoes associoadas. Em caso de empate devolve todas as atividades que partilhem o maior numero de marcacoes
      * @return Um lista com a ou as atividades mais populars, ou uma lista vazia caso nao existam marcacoes
      */

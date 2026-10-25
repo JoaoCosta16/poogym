@@ -73,6 +73,6 @@ public class Socio {
      * @return texto com os dados do socio
      */
     public String toString() {
-        return "Nome: " + nomeSocio + ", Numero: " + numeroSocio + ", Mail: " + mailSocio + ", Tipo" + tipoSocio + ", Desconto: " + desconto + "%";
+        return "Nome: " + nomeSocio + ", Numero: " + numeroSocio + ", Mail: " + mailSocio + ", Tipo: " + tipoSocio + ", Desconto: " + desconto + "%";
     }
 }
