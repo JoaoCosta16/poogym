@@ -231,6 +231,35 @@ public class Gestor {
     }
 
     /**
+     * Determina a ou as atividades com o maior numero de marcacoes associoadas. Em caso de empate devolve todas as atividades que partilhem o maior numero de marcacoes
+     * @return Um lista com a ou as atividades mais populars, ou uma lista vazia caso nao existam marcacoes
+     */
+    public ArrayList<Atividade> calcularAtividadeMaisPopular() {
+        ArrayList<Atividade> maisPopular = new ArrayList<>();
+
+        if (atividades.isEmpty() || marcacoes.isEmpty()) {
+            return maisPopular;
+        }
+
+        int maisMarcacoes = 0;
+        int total;
+
+        for (Atividade a : atividades) {
+            total = contarMarcacoesPorAtividade(a);
+            if (total > maisMarcacoes) {
+                maisMarcacoes = total;
+            }
+        }
+
+        for (Atividade a : atividades) {
+            if(contarMarcacoesPorAtividade(a) == maisMarcacoes) {
+                maisPopular.add(a);
+            }
+        }
+        return maisPopular;
+    }
+
+    /**
      * Obtem uma copia da lista com todos os socios registados no ginasio
      * @return lista de socios
      */

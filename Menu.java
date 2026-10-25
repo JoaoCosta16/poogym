@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -133,7 +134,7 @@ public class Menu {
                     esperarEnter();
                     break;
                 case 9:
-                    //maisPopular();
+                    maisPopular();
                     esperarEnter();
                     break;
                 case 10:
@@ -363,5 +364,31 @@ public class Menu {
 
         System.out.println("---Socios e Atividades Registados---");
         System.out.println("Socios Individuais: " + contagemSocios[0] + ", Socios Empresa: " + contagemSocios[1] + ", Aulas de Grupo: " + contagemAtividades[0] + ", SessoesPT: " + contagemAtividades[1]);
+    }
+
+    /**
+     * Apresenta no terminal a ou as atividades com o maior numero de marcacoes
+     */
+    private void maisPopular() {
+        System.out.println("---Atividade mais Popular---");
+        
+        ArrayList<Atividade> populares = gestor.calcularAtividadeMaisPopular();
+
+        if (populares.isEmpty()) {
+            System.out.println("Nao existem marcacoes registadas");
+            return;
+        }
+        int totalMarcacoes = gestor.contarMarcacoesPorAtividade(populares.get(0));
+
+        if (populares.size() == 1) {
+            System.out.println("Atividade mais Popular (com " + totalMarcacoes + " marcacoes):");
+            System.out.println(populares.get(0));
+        } 
+        else {
+            System.out.println("As atividades mais Populares (com " + totalMarcacoes + " marcacoes cada):");
+            for (Atividade a : populares) {
+                System.out.println(a);
+            }
+        }      
     }
 }

@@ -61,16 +61,6 @@ Objetivo: Identificar o estado do código (Completo, Quase Completo, Por Fazer)
 
 Para concluir a Fase 1 a 100%, é necessário implementar as funcionalidades 6 a 10 no Gestor e no Menu:
 
-[ ] 4. FUNCIONALIDADE 9 - MAIS POPULAR:
-    * No Gestor.java:
-      - Criar método 'public Atividades obterAtividadeMaisPopular()' (ou método que retorne a atividade e o número de marcações).
-      - Lógica: para cada atividade da lista de atividades, contar quantas marcações existem associadas a ela. Retornar a que tiver maior contagem.
-      - Tratar casos limite: lista de marcações vazia (retornar null) ou empate (pode retornar a primeira ou listar ambas).
-    * No Menu.java:
-      - Descomentar 'maisPopular()' na opção 9 do menu.
-      - Implementar o método 'private void maisPopular()':
-        Verificar se existem marcações; se sim, mostrar a atividade com maior procura e o respetivo número de inscrições.
-
 [ ] 5. FUNCIONALIDADE 10 - VALORES SÓCIO:
     * No Gestor.java:
       - Criar método 'public double calcularTotalGastoSocio(int numeroSocio)':
