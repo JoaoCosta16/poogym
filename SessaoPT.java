@@ -17,7 +17,7 @@ public class SessaoPT extends Atividade {
      * @param nivelTreino Iniciação, Intermédio ou Avançado
      */
     public SessaoPT(String nomeAtividade, Instrutor instrutor, LocalDateTime inicio, int duracao, String nivelTreino) {
-        super(nomeAtividade, instrutor, inicio, duracao, calcularCustoBase(nivelTreino));
+        super(nomeAtividade, instrutor, inicio, duracao, calcularCustoBase(nivelTreino), "SESSAOPT");
         this.nivelTreino = nivelTreino;
     }
 

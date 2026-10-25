@@ -70,6 +70,14 @@ public class Menu {
     }
 
     /**
+     * Faz uma pausa na execucao da consola, aguardando que o utilizador prima a tecla Enter para continuar e regressar ao menu principal.
+     */
+    private void esperarEnter() {
+        System.out.print("Prima ENTER para voltar ao menu...");
+        sc.nextLine();
+    }
+
+    /**
      * Inicia o ciclo principal da aplicacao e apresenta as opcoes disponiveis
      */
     public void iniciarMenu() {
@@ -90,7 +98,7 @@ public class Menu {
             System.out.print("Escolha uma opcao: ");
 
             opcao = lerInteiro("");
-
+            System.out.println();
             switch (opcao) {
                 case 1:
                     registarSocio();
@@ -103,9 +111,11 @@ public class Menu {
                     break;
                 case 4:
                     listarSocios();
+                    esperarEnter();
                     break;
                 case 5:
                     listarAtividades();
+                    esperarEnter();
                     break;
                 case 6:
                     //criarMarcacao();
@@ -114,7 +124,8 @@ public class Menu {
                     //listarMarcacoes();
                     break;
                 case 8:
-                    //resumoAtividades();
+                    resumoAtividades();
+                    esperarEnter();
                     break;
                 case 9:
                     //maisPopular();
@@ -134,7 +145,7 @@ public class Menu {
     /**
      * Recolhe os dados fornecidos pelo utilizador para a criacao de um novo socio
      */
-    public void registarSocio() {
+    private void registarSocio() {
         Socio novoSocio = null;
         System.out.println("---Registar Socio---");
         
@@ -175,7 +186,7 @@ public class Menu {
     /**
      * Recolhe os dados fornecidos pelo utilizador para a criacao de um novo instrutor
      */
-    public void registarInstrutor() {
+    private void registarInstrutor() {
         System.out.println("---Registar Instrutor---");
 
         String nome = lerString("Nome: ");
@@ -196,7 +207,7 @@ public class Menu {
     /**
      * Recolhe os dados fornecidos pelo utilizador para a criacao de uma nova atividade
      */
-    public void registarAtividade() {
+    private void registarAtividade() {
         System.out.println("---Registar Atividade---");
 
         String nomeAtividade = lerString("Nome da atividade a registar: ");
@@ -252,7 +263,7 @@ public class Menu {
     /**
      * Apresenta no terminal todos os socios registados no sistema
      */
-    public void listarSocios() {
+    private void listarSocios() {
         System.out.println("---Lista de Socios---");
         if (gestor.getSocios().isEmpty()) {
             System.out.println("Nao existem socios registados.");
@@ -266,7 +277,7 @@ public class Menu {
     /**
      * Apresenta no terminal todas as atividades registadas no sistema
      */
-    public void listarAtividades() {
+    private void listarAtividades() {
         System.out.println("---Lista de Atividades---");
         if (gestor.getAtividades().isEmpty()) {
             System.out.println("Nao existem atividades registados.");
@@ -275,5 +286,16 @@ public class Menu {
         for (Atividade a : gestor.getAtividades()) {
             System.out.println(a.toString());
         }
+    }
+
+    /**
+     * Apresenta no terminal o numero e tipo de socios e atividades registados no sistema
+     */
+    private void resumoAtividades() {
+        int contagemSocios[] = gestor.contarSociosPorTipo();
+        int contagemAtividades[] = gestor.contarAtividadesPorTipo();
+
+        System.out.println("---Socios e Atividades Registados---");
+        System.out.println("Socios Individuais: " + contagemSocios[0] + ", Socios Empresa: " + contagemSocios[1] + ", Aulas de Grupo: " + contagemAtividades[0] + ", SessoesPT: " + contagemAtividades[1]);
     }
 }

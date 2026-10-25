@@ -110,6 +110,44 @@ public class Gestor {
     }
 
     /**
+     * Conta o numero total de socios individuais e de empresa registados
+     * @return um array de inteiros onde o indice 0 representa o numero de socios individuas e 1 representa os de empresa
+     */
+    public int[] contarSociosPorTipo() {
+        int individuais = 0;
+        int empresa = 0;
+
+        for (Socio s : socios) {
+            if (s.getTipoSocio().equalsIgnoreCase("INDIVIDUAL")) {
+                individuais++;
+            }
+            else {
+                empresa++;
+            }
+        }
+        return new int[] {individuais, empresa};
+    }
+
+    /**
+     * Conta o numero total de Aulas de Grupo e SessoesPT registadas
+     * @return um array de inteiros onde o indice 0 representa o numero de Aulas de Grupo e 1 representa o numero de SessoesPT
+     */
+    public int[] contarAtividadesPorTipo() {
+        int aulasGrupo = 0;
+        int sessoesPt = 0;
+
+        for (Atividade a : atividades) {
+            if (a.getTipoAtividade().equalsIgnoreCase("AULAGRUPO")) {
+                aulasGrupo++;
+            }
+            else {
+                sessoesPt++;
+            }
+        }
+        return new int[] {aulasGrupo, sessoesPt};
+    }
+
+    /**
      * Obtem uma copia da lista com todos os socios registados no ginasio
      * @return lista de socios
      */

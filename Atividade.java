@@ -12,6 +12,7 @@ public class Atividade {
     private LocalDateTime inicio;
     private int duracao;
     private double custoBase;
+    private String tipoAtividade; 
  
     /**
      * cria uma atividade
@@ -20,13 +21,15 @@ public class Atividade {
      * @param inicio data e hora de inicio
      * @param duracao duracao em minutos
      * @param custoBase custo base em euros
+     * @param tipoAtividade tipo de atividade
      */
-    public Atividade(String nomeAtividade, Instrutor instrutor, LocalDateTime inicio, int duracao, double custoBase) {
+    public Atividade(String nomeAtividade, Instrutor instrutor, LocalDateTime inicio, int duracao, double custoBase, String tipoAtividade) {
         this.nomeAtividade = nomeAtividade;
         this.instrutor = instrutor;
         this.inicio = inicio;
         this.duracao = duracao;
         this.custoBase = custoBase;
+        this.tipoAtividade = tipoAtividade;
     }
  
     /**
@@ -67,6 +70,14 @@ public class Atividade {
      */
     public double getCustoBase() {
         return custoBase;
+    }
+
+    /**
+     * obtem o tipo de atividade
+     * @return tipo de socio
+     */
+    public String getTipoAtividade() {
+        return tipoAtividade;
     }
  
     /**

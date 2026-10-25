@@ -52,10 +52,6 @@ Objetivo: Identificar o estado do código (Completo, Quase Completo, Por Fazer)
     - main.java: aviso sobre construtor por defeito sem comentário.
     * NOTA: É obrigatório entregar o ZIP do Javadoc na Fase 1, pelo que o Javadoc deve compilar com 0 erros.
 
-[!] 3. IDENTIFICAÇÃO DE TIPOS SEM USAR INSTANCEOF (Regra Crítica do Enunciado):
-    - O enunciado proíbe expressamente o uso de 'instanceof' e 'class.getName()' (sob forte penalização na nota).
-    - Em Atividades.java: NÃO existe nenhum atributo de tipo (ex: 'tipoAtividade') nem método identificador. É necessário adicionar uma forma de saber se é Aula de Grupo ou Sessão de PT (por exemplo, passar um tipo no super() ou um getter específico), para permitir a contagem na Funcionalidade 8 sem violar as regras de OOP.
-
 [!] 4. CLASSE Instrutor.java:
     - Falta o método 'toString()' na classe Instrutor. Embora tenha getters, ter um toString() próprio é uma boa prática e facilita listagens e debugging.
 
@@ -95,19 +91,6 @@ Para concluir a Fase 1 a 100%, é necessário implementar as funcionalidades 6 a
         1. Verificar se existem marcações; caso contrário, informar o utilizador.
         2. Percorrer as marcações e imprimir cada uma (dados do sócio, atividade, custo base, poupança e custo final).
         3. Imprimir no fim o Total Faturado pelo ginásio em euros.
-
-[ ] 3. FUNCIONALIDADE 8 - RESUMO DE ATIVIDADES:
-    * No Gestor.java:
-      - Criar métodos de contagem (ou um método de resumo) que conte:
-        a) Sócios Individuais;
-        b) Sócios Empresa;
-        c) Aulas de Grupo;
-        d) Sessões de Personal Training.
-      * ATENÇÃO: Fazer a contagem através de atributos (ex: tipoSocio e tipoAtividade), NUNCA com 'instanceof'.
-    * No Menu.java:
-      - Descomentar 'resumoAtividades()' na opção 8 do menu.
-      - Implementar o método 'private void resumoAtividades()':
-        Apresentar as contagens com formatação clara (ex: "Sócios Individuais: X, Sócios Empresa: Y", "Aulas de Grupo: W, Sessões de PT: Z").
 
 [ ] 4. FUNCIONALIDADE 9 - MAIS POPULAR:
     * No Gestor.java:

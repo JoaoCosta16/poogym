@@ -19,7 +19,7 @@ public class AulaGrupo extends Atividade {
      * @param capacidadeMaxima numero maximo de participantes
      */
     public AulaGrupo(String nomeAtividade, Instrutor instrutor, LocalDateTime inicio, int duracao, String modalidade, int capacidadeMaxima) {
-        super(nomeAtividade, instrutor, inicio, duracao, calcularCustoBase(modalidade));
+        super(nomeAtividade, instrutor, inicio, duracao, calcularCustoBase(modalidade), "AULAGRUPO");
         this.modalidade = modalidade;
         this.capacidadeMaxima = capacidadeMaxima;
     }

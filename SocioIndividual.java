@@ -52,6 +52,6 @@ public class SocioIndividual extends Socio{
      */
 
     public String toString() {
-        return super.toString() + ", Ano de Nascimento: " + anoNascimento;
+        return "[Individual] " + super.toString() + ", Ano de Nascimento: " + anoNascimento;
     }
 }
