@@ -49,8 +49,6 @@ Objetivo: Identificar o estado do código (Completo, Quase Completo, Por Fazer)
 ================================================================================
 
 [!] 2. ERROS DE COMPILAÇÃO NO JAVADOC:
-    - SocioIndividual.java: linhas 16 e 17 têm tags '@param tipoSocio' e '@param desconto' que não existem nos parâmetros do construtor. Isto faz o comando 'javadoc' falhar com 2 erros.
-    - Gestor.java: linha 60 ('@param nomeInstrutor') e linha 129 ('@return') estão sem descrição de texto (geram warnings).
     - main.java: aviso sobre construtor por defeito sem comentário.
     * NOTA: É obrigatório entregar o ZIP do Javadoc na Fase 1, pelo que o Javadoc deve compilar com 0 erros.
 
@@ -61,17 +59,11 @@ Objetivo: Identificar o estado do código (Completo, Quase Completo, Por Fazer)
 [!] 4. CLASSE Instrutor.java:
     - Falta o método 'toString()' na classe Instrutor. Embora tenha getters, ter um toString() próprio é uma boa prática e facilita listagens e debugging.
 
-[!] 5. COMPARAÇÃO DE STRINGS NAS ATIVIDADES (Sensibilidade a Maiúsculas/Minúsculas):
-    - Em AulaGrupo.java (calcularCustoBase) e SessaoPT.java (calcularCustoBase), a verificação é feita com .equals("Yoga"), .equals("Iniciacao"), etc.
-    - Se o utilizador escrever em minúsculas ("yoga", "iniciacao") ou com acentos ("Iniciação"), o custo base fica 0.0 EUR!
-    - Solução recomendada: usar '.equalsIgnoreCase()' e aceitar variações comuns com/sem acento.
-
 [!] 6. DADOS DE DEMONSTRAÇÃO INCOMPLETOS:
     - O método carregarDados() em Gestor.java carrega 3 instrutores, 6 sócios e 8 atividades, mas NÃO CARREGA NENHUMA MARCAÇÃO.
     - O enunciado exige explicitamente para a Fase 1: pelo menos 6 sócios (3 de cada tipo), 8 atividades e 6 MARCAÇÕES pré-carregadas.
 
 [!] 7. CONVENÇÃO DE NOMES:
-    - main.java: o nome da classe é 'main' (com 'm' minúsculo). A convenção padrão de Java e a sugestão do guia é 'Main' (com 'M' maiúsculo).
     - Atividades.java: o nome está no plural ('Atividades'), enquanto cada instância representa uma única atividade (sugestão no guia é 'Atividade'). Funciona perfeitamente, mas deve ser mantido consistente no UML e código.
 
 [!] 8. DETALHE VISUAL EM Socio.toString():

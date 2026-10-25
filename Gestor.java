@@ -58,7 +58,7 @@ public class Gestor {
 
     /**
      * Procura um instrutor na lista de instrutores pelo seu nome
-     * @param nomeInstrutor
+     * @param nomeInstrutor nome do instrutor a procurar
      * @return o objeto instrutor correspondente se este for encontrado e null caso contrarioS
      */
     public Instrutor procurarInstrutor(String nomeInstrutor) {
@@ -127,7 +127,7 @@ public class Gestor {
 
     /**
      * Obtem a lista com todas as atividades registadas no ginasio
-     * @return
+     * @return lista de atividades
      */
     public ArrayList<Atividades> getAtividades() {
         return new ArrayList<>(atividades);

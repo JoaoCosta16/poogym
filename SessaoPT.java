@@ -34,13 +34,13 @@ public class SessaoPT extends Atividades {
      * @return custo base
      */
     private static double calcularCustoBase(String nivelTreino) {
-        if (nivelTreino.equals("Iniciacao")) {
+        if (nivelTreino.equalsIgnoreCase("Iniciacao")) {
             return 18.00;
         }
-        if (nivelTreino.equals("Intermedio")) {
+        if (nivelTreino.equalsIgnoreCase("Intermedio")) {
             return 22.00;
         }
-        if (nivelTreino.equals("Avancado")) {
+        if (nivelTreino.equalsIgnoreCase("Avancado")) {
             return 28.00;
         }
         return 0.0;

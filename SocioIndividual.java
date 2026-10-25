@@ -13,8 +13,6 @@ public class SocioIndividual extends Socio{
      * @param nomeSocio nome do socio
      * @param numeroSocio numero unico do socio
      * @param mailSocio e-mail do socio
-     * @param tipoSocio tipo de socio
-     * @param desconto desconto de socio 
      * @param anoNascimento ano de nascimento do socio
      */
 

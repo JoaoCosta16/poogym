@@ -41,16 +41,16 @@ public class AulaGrupo extends Atividades {
     }
  
     private static double calcularCustoBase(String modalidade) {
-        if (modalidade.equals("Yoga")) {
+        if (modalidade.equalsIgnoreCase("Yoga")) {
             return 8.00;
         }
-        if (modalidade.equals("Spinning")) {
+        if (modalidade.equalsIgnoreCase("Spinning")) {
             return 9.00;
         }
-        if (modalidade.equals("Zumba")) {
+        if (modalidade.equalsIgnoreCase("Zumba")) {
             return 8.50;
         }
-        if (modalidade.equals("CrossFit")) {
+        if (modalidade.equalsIgnoreCase("CrossFit")) {
             return 12.00;
         }
         return 0.0;
