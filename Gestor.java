@@ -57,6 +57,20 @@ public class Gestor {
     }
 
     /**
+     * Procura um socio na lista de socios pelo seu numero
+     * @param numeroSocio numero do socio a procurar
+     * @return o objeto socio correspondente se este for encontrado e null caso contrario
+     */
+    public Socio procurarSocio(int numeroSocio) {
+        for (Socio s : this.socios) {
+            if (s.getNumeroSocio() == numeroSocio) {
+                return s;
+            }
+        }
+        return null;
+    }
+
+    /**
      * Procura um instrutor na lista de instrutores pelo seu nome
      * @param nomeInstrutor nome do instrutor a procurar
      * @return o objeto instrutor correspondente se este for encontrado e null caso contrarioS
@@ -65,6 +79,20 @@ public class Gestor {
         for (Instrutor i : this.instrutores) {
             if (i.getNomeInstrutor().trim().equalsIgnoreCase(nomeInstrutor.trim())) {
                 return i;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * Procura uma atividade na lista de atividades pelo seu nome
+     * @param nomeAtividade nome da atividade a procurar
+     * @return o objeto atividade correspondente se esta for encontrada e null caso contrario
+     */
+    public Atividade procurarAtividade(String nomeAtividade) {
+        for (Atividade a : this.atividades) {
+            if (a.getNomeAtividade().trim().equalsIgnoreCase(nomeAtividade.trim())) {
+                return a;
             }
         }
         return null;
@@ -110,6 +138,34 @@ public class Gestor {
     }
 
     /**
+     * Adiciona uma nova marcacao a lista caso esta seja valida e haja vaga
+     * @param m o objeto da Classe Marcacao a adicionar
+     * @return true se a insercao tiver sucesso e false caso contrario
+     */
+    public boolean adicionarMarcacao(Marcacao m) {
+        if (m == null) {
+            return false;
+        }
+
+        Atividade a = m.getAtividade();
+        int ocupacaoAtual = contarMarcacoesPorAtividade(a);
+
+        if (a.getTipoAtividade().equalsIgnoreCase("SESSAOPT")) {
+            AulaGrupo aula = (AulaGrupo) a;
+            if (ocupacaoAtual >= aula.getCapacidadeMaxima()) {
+                return false;
+            }
+        } else {
+            if(ocupacaoAtual >+ 1) {
+                return false;
+            }
+        }
+
+        marcacoes.add(m);
+        return true;
+    }    
+    
+    /**
      * Conta o numero total de socios individuais e de empresa registados
      * @return um array de inteiros onde o indice 0 representa o numero de socios individuas e 1 representa os de empresa
      */
@@ -148,6 +204,21 @@ public class Gestor {
     }
 
     /**
+     * Conta quantas marcacoes ja estao associadas a uma determinada atividade
+     * @param a atividade a verificar
+     * @return  numero de marcacoes existentes
+     */
+    public int contarMarcacoesPorAtividade(Atividade a) {
+        int total = 0;
+        for (Marcacao m : marcacoes) {
+            if(m.getAtividade().equals(a)) {
+                total++;
+            }
+        }
+        return total;
+    }
+
+    /**
      * Obtem uma copia da lista com todos os socios registados no ginasio
      * @return lista de socios
      */
@@ -169,6 +240,14 @@ public class Gestor {
      */
     public ArrayList<Atividade> getAtividades() {
         return new ArrayList<>(atividades);
+    }
+
+    /**
+     * Obtem a lista com todas as marcacoes registadas no ginasio
+     * @return lista de marcacoes
+     */
+    public ArrayList<Marcacao> getMarcacoes() {
+        return new ArrayList<>(marcacoes);
     }
 
     /**

@@ -67,8 +67,6 @@ Para concluir a Fase 1 a 100%, é necessário implementar as funcionalidades 6 a
 
 [ ] 1. FUNCIONALIDADE 6 - CRIAR MARCAÇÃO:
     * No Gestor.java:
-      - Criar método 'public Socio procurarSocio(int numeroSocio)' (atualmente só existe existeSocio que devolve boolean).
-      - Criar método 'public Atividades procurarAtividade(String nomeAtividade)' para encontrar a atividade pretendida.
       - Criar método 'public boolean adicionarMarcacao(Marcacao m)'.
       - (Opcional/Recomendado): Verificar capacidade máxima se for Aula de Grupo (contar marcações já existentes para essa aula).
     * No Menu.java:

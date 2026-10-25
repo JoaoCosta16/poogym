@@ -259,6 +259,29 @@ public class Menu {
             }
         }
     }
+    /**
+     * Recolhe os dados fornecidos pelo utilizador para a criacao de uma nova marcacao
+     */
+    private void registarMarcacao() {
+        System.out.println("---Registar Marcacao---");
+
+        if (gestor.getSocios().isEmpty()) {
+            System.out.println("Erro: Nao existem socios registados no sistema");
+            return;
+        }
+
+        if (gestor.getAtividades().isEmpty()) {
+            System.out.println("Erro: Nao existem atividades registadas no sistema");
+            return;
+        }
+
+        int numeroSocioMarcacao = lerInteiro("Numero do Socio:");
+        Socio socio = gestor.procurarSocio(numeroSocioMarcacao);
+        if (socio == null) {
+            System.out.println("Erro: Socio com o numer " + numeroSocioMarcacao + " nao encontrado");
+            return;
+        }
+    }
 
     /**
      * Apresenta no terminal todos os socios registados no sistema
