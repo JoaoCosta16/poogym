@@ -102,12 +102,15 @@ public class Menu {
             switch (opcao) {
                 case 1:
                     registarSocio();
+                    esperarEnter();
                     break;
                 case 2:
                     registarInstrutor();
+                    esperarEnter();
                     break;
                 case 3:
                     registarAtividade();
+                    esperarEnter();
                     break;
                 case 4:
                     listarSocios();
@@ -118,10 +121,12 @@ public class Menu {
                     esperarEnter();
                     break;
                 case 6:
-                    //criarMarcacao();
+                    registarMarcacao();
+                    esperarEnter();
                     break;
                 case 7:
-                    //listarMarcacoes();
+                    listarMarcacoes();
+                    esperarEnter();
                     break;
                 case 8:
                     resumoAtividades();
@@ -129,9 +134,11 @@ public class Menu {
                     break;
                 case 9:
                     //maisPopular();
+                    esperarEnter();
                     break;
                 case 10:
                     //valoresSocio();
+                    esperarEnter();
                     break;
                 case 0:
                     System.out.println("A sair...");
@@ -278,8 +285,28 @@ public class Menu {
         int numeroSocioMarcacao = lerInteiro("Numero do Socio:");
         Socio socio = gestor.procurarSocio(numeroSocioMarcacao);
         if (socio == null) {
-            System.out.println("Erro: Socio com o numer " + numeroSocioMarcacao + " nao encontrado");
+            System.out.println("Erro: Socio com o numero " + numeroSocioMarcacao + " nao encontrado");
             return;
+        }
+
+        String nomeAtividadeMarcacao = lerString("Nome da Atividade:");
+        Atividade atividade = gestor.procurarAtividade(nomeAtividadeMarcacao);
+        if (atividade == null) {
+            System.out.println("Erro: Atividade com o nome '" + nomeAtividadeMarcacao + "' nao encontrada");
+            return;
+        }
+        LocalDateTime dataHoraInicio = atividade.getInicio();
+
+        Marcacao marcacao = new Marcacao(socio, atividade, dataHoraInicio);
+        if (gestor.adicionarMarcacao(marcacao)) {
+            System.out.println("Marcacao efetuada com sucesso!");
+            System.out.println("----------------------------------------");
+            System.out.println("Socio: " + socio.getNomeSocio());
+            System.out.println("Atividade: " + atividade.getNomeAtividade());
+            System.out.printf("Custo Base: %.2f EUR\n", marcacao.getPrecoBase());
+            System.out.printf("Desconto Aplicado (Poupanca): %.2f EUR\n", marcacao.getPoupanca());
+            System.out.printf("Preco Final a Pagar: %.2f EUR\n", marcacao.getPrecoFinal());
+            System.out.println("----------------------------------------");
         }
     }
 
@@ -309,6 +336,22 @@ public class Menu {
         for (Atividade a : gestor.getAtividades()) {
             System.out.println(a.toString());
         }
+    }
+
+    /**
+     * Apresenta no terminal todas as marcacoes registadas no sistema, os seus custos e o total faturado pelo ginasio
+     */    
+    private void listarMarcacoes() {
+        System.out.println("---Lista de Marcacoes---");
+        if (gestor.getMarcacoes().isEmpty()) {
+            System.out.println("Nao existem marcacoes registados.");
+            return;
+        }
+        for (Marcacao m : gestor.getMarcacoes()) {
+            System.out.println(m.toString());
+        }
+        double totalFaturado = gestor.calcularTotalFaturado();
+        System.out.printf("Total Faturado: %.2f EUR\n", totalFaturado);
     }
 
     /**

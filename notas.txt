@@ -55,40 +55,11 @@ Objetivo: Identificar o estado do código (Completo, Quase Completo, Por Fazer)
 [!] 4. CLASSE Instrutor.java:
     - Falta o método 'toString()' na classe Instrutor. Embora tenha getters, ter um toString() próprio é uma boa prática e facilita listagens e debugging.
 
-[!] 6. DADOS DE DEMONSTRAÇÃO INCOMPLETOS:
-    - O método carregarDados() em Gestor.java carrega 3 instrutores, 6 sócios e 8 atividades, mas NÃO CARREGA NENHUMA MARCAÇÃO.
-    - O enunciado exige explicitamente para a Fase 1: pelo menos 6 sócios (3 de cada tipo), 8 atividades e 6 MARCAÇÕES pré-carregadas.
-
 ================================================================================
 4. O QUE ESTÁ POR FAZER [TODO] A NÍVEL DE CÓDIGO
 ================================================================================
 
 Para concluir a Fase 1 a 100%, é necessário implementar as funcionalidades 6 a 10 no Gestor e no Menu:
-
-[ ] 1. FUNCIONALIDADE 6 - CRIAR MARCAÇÃO:
-    * No Gestor.java:
-      - Criar método 'public boolean adicionarMarcacao(Marcacao m)'.
-      - (Opcional/Recomendado): Verificar capacidade máxima se for Aula de Grupo (contar marcações já existentes para essa aula).
-    * No Menu.java:
-      - Descomentar a chamada 'criarMarcacao()' na opção 6 do menu.
-      - Implementar o método 'private void criarMarcacao()':
-        1. Pedir o número de sócio e verificar se existe (se não existir, dar mensagem de erro).
-        2. Pedir o nome da atividade (ou listar as atividades para seleção) e verificar se existe.
-        3. Pedir a data/hora da marcação (ou usar a data/hora já definida na atividade).
-        4. Instanciar o objeto Marcacao(socio, atividade, dataHora).
-        5. Adicionar a marcação ao Gestor.
-        6. Apresentar no ecrã o resumo da marcação com o custo base, desconto aplicado, poupança e preço final.
-
-[ ] 2. FUNCIONALIDADE 7 - LISTAR MARCAÇÕES:
-    * No Gestor.java:
-      - Criar método 'public ArrayList<Marcacao> getMarcacoes()'.
-      - Criar método 'public double calcularTotalFaturado()' que percorre todas as marcações e soma 'getPrecoFinal()'.
-    * No Menu.java:
-      - Descomentar 'listarMarcacoes()' na opção 7 do menu.
-      - Implementar o método 'private void listarMarcacoes()':
-        1. Verificar se existem marcações; caso contrário, informar o utilizador.
-        2. Percorrer as marcações e imprimir cada uma (dados do sócio, atividade, custo base, poupança e custo final).
-        3. Imprimir no fim o Total Faturado pelo ginásio em euros.
 
 [ ] 4. FUNCIONALIDADE 9 - MAIS POPULAR:
     * No Gestor.java:

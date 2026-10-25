@@ -150,7 +150,7 @@ public class Gestor {
         Atividade a = m.getAtividade();
         int ocupacaoAtual = contarMarcacoesPorAtividade(a);
 
-        if (a.getTipoAtividade().equalsIgnoreCase("SESSAOPT")) {
+        if (a.getTipoAtividade().equalsIgnoreCase("AULAGRUPO")) {
             AulaGrupo aula = (AulaGrupo) a;
             if (ocupacaoAtual >= aula.getCapacidadeMaxima()) {
                 return false;
@@ -206,7 +206,7 @@ public class Gestor {
     /**
      * Conta quantas marcacoes ja estao associadas a uma determinada atividade
      * @param a atividade a verificar
-     * @return  numero de marcacoes existentes
+     * @return numero de marcacoes existentes
      */
     public int contarMarcacoesPorAtividade(Atividade a) {
         int total = 0;
@@ -214,6 +214,18 @@ public class Gestor {
             if(m.getAtividade().equals(a)) {
                 total++;
             }
+        }
+        return total;
+    }
+
+    /**
+     * Calcula o total faturado pelo ginasio
+     * @return soma de todos os precos finais das marcacoes registadas
+     */
+    public double calcularTotalFaturado() {
+        double total = 0.0;
+        for (Marcacao m : marcacoes) {
+            total += m.getPrecoFinal();
         }
         return total;
     }
@@ -295,5 +307,19 @@ public class Gestor {
         this.adicionarAtividade(pt2);
         this.adicionarAtividade(pt3);
         this.adicionarAtividade(pt4);
+
+        Marcacao m1 = new Marcacao(s1, ag1, ag1.getInicio());
+        Marcacao m2 = new Marcacao(s2, ag1, ag1.getInicio());
+        Marcacao m3 = new Marcacao(s4, ag2, ag2.getInicio());
+        Marcacao m4 = new Marcacao(s3, pt1, pt1.getInicio());
+        Marcacao m5 = new Marcacao(s5, pt2, pt2.getInicio());
+        Marcacao m6 = new Marcacao(s6, ag3, ag3.getInicio());
+
+        this.adicionarMarcacao(m1);
+        this.adicionarMarcacao(m2);
+        this.adicionarMarcacao(m3);
+        this.adicionarMarcacao(m4);
+        this.adicionarMarcacao(m5);
+        this.adicionarMarcacao(m6);
     }
 }
