@@ -217,7 +217,7 @@ public class Menu {
 
         int tipo = lerInteiro("Introduza o numero correspondente ao tipo de Atividade (0 - Aula de Grupo | 1 - Personal Training): ");
 
-        Atividades atividade = null;
+        Atividade atividade = null;
 
         switch (tipo) {
             case 0:
@@ -272,7 +272,7 @@ public class Menu {
             System.out.println("Nao existem atividades registados.");
             return;
         }
-        for (Atividades a : gestor.getAtividades()) {
+        for (Atividade a : gestor.getAtividades()) {
             System.out.println(a.toString());
         }
     }

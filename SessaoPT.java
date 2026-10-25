@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
  * @author Gustavo e João
  * @version 3.0
  */
-public class SessaoPT extends Atividades {
+public class SessaoPT extends Atividade {
     private String nivelTreino;
 
     /**

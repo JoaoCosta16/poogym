@@ -63,13 +63,6 @@ Objetivo: Identificar o estado do código (Completo, Quase Completo, Por Fazer)
     - O método carregarDados() em Gestor.java carrega 3 instrutores, 6 sócios e 8 atividades, mas NÃO CARREGA NENHUMA MARCAÇÃO.
     - O enunciado exige explicitamente para a Fase 1: pelo menos 6 sócios (3 de cada tipo), 8 atividades e 6 MARCAÇÕES pré-carregadas.
 
-[!] 7. CONVENÇÃO DE NOMES:
-    - Atividades.java: o nome está no plural ('Atividades'), enquanto cada instância representa uma única atividade (sugestão no guia é 'Atividade'). Funciona perfeitamente, mas deve ser mantido consistente no UML e código.
-
-[!] 8. DETALHE VISUAL EM Socio.toString():
-    - Na linha 68 de Socio.java: ",Tipo" está sem espaço antes de Tipo. Deve ser ", Tipo: ".
-
-
 ================================================================================
 4. O QUE ESTÁ POR FAZER [TODO] A NÍVEL DE CÓDIGO
 ================================================================================

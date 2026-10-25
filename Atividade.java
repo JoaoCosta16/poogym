@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
  * @author Gustavo e João
  * @version 3.0
  */
-public class Atividades {
+public class Atividade {
     private String nomeAtividade;
     private Instrutor instrutor;
     private LocalDateTime inicio;
@@ -21,7 +21,7 @@ public class Atividades {
      * @param duracao duracao em minutos
      * @param custoBase custo base em euros
      */
-    public Atividades(String nomeAtividade, Instrutor instrutor, LocalDateTime inicio, int duracao, double custoBase) {
+    public Atividade(String nomeAtividade, Instrutor instrutor, LocalDateTime inicio, int duracao, double custoBase) {
         this.nomeAtividade = nomeAtividade;
         this.instrutor = instrutor;
         this.inicio = inicio;

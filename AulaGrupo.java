@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
  * @author Gustavo e João
  * @version 3.0
  */
-public class AulaGrupo extends Atividades {
+public class AulaGrupo extends Atividade {
     private String modalidade;
     private int capacidadeMaxima;
  

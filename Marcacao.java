@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
  */
 public class Marcacao {
     private Socio socio;
-    private Atividades atividade;
+    private Atividade atividade;
     private LocalDateTime dataHora;
     private double precoBase;
     private double poupanca;
@@ -19,7 +19,7 @@ public class Marcacao {
      * @param atividade atividade marcada
      * @param dataHora data e hora da marcacao
      */
-    public Marcacao(Socio socio, Atividades atividade, LocalDateTime dataHora) {
+    public Marcacao(Socio socio, Atividade atividade, LocalDateTime dataHora) {
         this.socio = socio;
         this.atividade = atividade;
         this.dataHora = dataHora;
@@ -40,7 +40,7 @@ public class Marcacao {
      * Obtem a atividade da marcacao.
      * @return atividade da marcacao
      */
-    public Atividades getAtividade() {
+    public Atividade getAtividade() {
         return atividade;
     }
  
