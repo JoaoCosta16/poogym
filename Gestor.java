@@ -156,7 +156,7 @@ public class Gestor {
                 return false;
             }
         } else {
-            if(ocupacaoAtual >+ 1) {
+            if(ocupacaoAtual >= 1) {
                 return false;
             }
         }

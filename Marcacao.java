@@ -1,4 +1,5 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
  
 /**
  * Representa a marcacao de um socio numa atividade, com os respetivos valores financeiros.
@@ -81,8 +82,9 @@ public class Marcacao {
      * @return texto com os dados da marcacao
      */
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         return "socio: " + socio.getNomeSocio() + " (" + socio.getNumeroSocio() + "), atividade: " + atividade.getNomeAtividade()
-                + ", data: " + dataHora
+                + ", data: " + dataHora.format(formatter)
                 + ", base: " + precoBase 
                 + " EUR, poupanca: " + poupanca
                 + " EUR, final: " + precoFinal + " EUR";

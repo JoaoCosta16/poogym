@@ -1,72 +1,101 @@
 ================================================================================
                     POOGYM - ANÁLISE DE ESTADO DA FASE 1
 ================================================================================
-Data da Análise: Outubro de 2026
-Objetivo: Identificar o estado do código (Completo, Quase Completo, Por Fazer)
-          para a conclusão total da Fase 1 do projeto POOGym.
+Data da Última Revisão: 25 de Outubro de 2026
+Estado Global: QUASE PRONTO PARA ENTREGA (~95% do código concluído)
 ================================================================================
 
 --------------------------------------------------------------------------------
 1. RESUMO EXECUTIVO
 --------------------------------------------------------------------------------
-- Compilação do Código Java: COM SUCESSO (0 erros de compilação com javac).
-- Geração de Javadoc: COM ERROS (2 erros e 4 avisos bloqueiam a geração limpa).
-- Funcionalidades Obrigatórias (1 a 10):
-  * Funcionalidades 1 a 5: IMPLEMENTADAS (com pequenos detalhes a afinar).
-  * Funcionalidades 6 a 10: POR IMPLEMENTAR (comentadas no Menu, métodos ausentes no Gestor).
+- Compilação do Código Java: 100% SUCESSO (0 erros na compilação com javac).
+- Execução e Funcionalidades: TODAS AS 10 FUNCIONALIDADES OBRIGATÓRIAS IMPLEMENTADAS.
+- Geração de Javadoc: FUNCIONAL (0 erros, apenas 1 warning menor no Main.java).
 - Dados de Demonstração (carregarDados):
-  * Sócios: 6 criados (3 individuais + 3 empresa) -> REQUISITO CUMPRIDO.
-  * Instrutores: 3 criados -> REQUISITO CUMPRIDO.
-  * Atividades: 8 criadas (4 aulas de grupo + 4 sessões PT) -> REQUISITO CUMPRIDO.
-  * Marcações: 0 criadas -> REQUISITO EM FALTA (o enunciado exige pelo menos 6 marcações).
+  * Sócios: 6 carregados (3 individuais + 3 empresa) -> REQUISITO CUMPRIDO.
+  * Instrutores: 3 carregados -> REQUISITO CUMPRIDO.
+  * Atividades: 8 carregadas (4 aulas de grupo + 4 sessões PT) -> REQUISITO CUMPRIDO.
+  * Marcações: 6 carregadas -> REQUISITO CUMPRIDO.
+- Regra de OOP sem 'instanceof': RESPEITADA (usando tipoSocio e tipoAtividade).
 
 
 ================================================================================
-2. O QUE ESTÁ COMPLETO [OK]
+2. ESTADO DAS 10 FUNCIONALIDADES OBRIGATÓRIAS
 ================================================================================
 
-[x] Estrutura Base de Herança e Encapsulamento:
-    - Socio.java: atributos privados (nomeSocio, numeroSocio, mailSocio, tipoSocio, desconto), construtor, getters e toString().
-    - SocioEmpresa.java: herança correta de Socio, dados da empresa (nifEmpresa, nomeEmpresa), desconto fixo de 20%, toString() formatado.
-    - Marcacao.java: associação entre Socio, Atividades e data/hora. Cálculos de preço base, poupança e preço final no construtor. Getters e toString() completos.
-
-[x] Funcionalidade 1 - Registar Sócio:
-    - Menu.java: pede os dados ao utilizador, permite escolher Individual ou Empresa, valida campos e adiciona ao gestor.
-    - Gestor.java: valida duplicados através de existeSocio(int numeroSocio).
-
-[x] Funcionalidade 2 - Registar Instrutor:
-    - Menu.java e Gestor.java: pede nome, género e formação, valida se já existe pelo nome e adiciona à coleção.
-
-[x] Funcionalidade 4 - Listar Sócios:
-    - Menu.java e Gestor.java: lista todos os sócios ou informa se a lista estiver vazia.
-
-[x] Funcionalidade 5 - Listar Atividades:
-    - Menu.java e Gestor.java: lista todas as atividades ou informa se a lista estiver vazia.
+[x] 1. Registar Sócio: Funcional (Individual / Empresa, validação de número único).
+[x] 2. Registar Instrutor: Funcional (Nome, género, formação, verificação de duplicado).
+[x] 3. Registar Atividade: Funcional (AulaGrupo com modalidade/capacidade, SessaoPT com nível).
+[x] 4. Listar Sócios: Funcional (Apresenta todos os dados formatados).
+[x] 5. Listar Atividades: Funcional (Apresenta todas as atividades formatadas).
+[x] 6. Criar Marcação: Funcional (Pesquisa sócio e atividade, calcula descontos e regista).
+[x] 7. Listar Marcações: Funcional (Lista todas as marcações e calcula o Total Faturado).
+[x] 8. Resumo de Atividades: Funcional (Contabiliza sócios individuais/empresa e aulas/PT sem 'instanceof').
+[x] 9. Mais Popular: Funcional (Determina a atividade com mais inscrições e gere empates).
+[x] 10. Valores Sócio: Funcional (Calcula total gasto e total poupado, gere sócio inexistente e sem marcações).
 
 
 ================================================================================
-3. O QUE ESTÁ QUASE COMPLETO [AVISOS E AJUSTES NECESSÁRIOS]
+3. AJUSTES E BUGS RECOMENDADOS NO CÓDIGO
 ================================================================================
 
-[!] 2. ERROS DE COMPILAÇÃO NO JAVADOC:
-    - main.java: aviso sobre construtor por defeito sem comentário.
-    * NOTA: É obrigatório entregar o ZIP do Javadoc na Fase 1, pelo que o Javadoc deve compilar com 0 erros.
+[!] 1. CORREÇÃO DE OPERADOR EM Gestor.java (linha 159):
+    - No método adicionarMarcacao(), está escrito:
+        if(ocupacaoAtual >+ 1) { return false; }
+    - O operador '>+ 1' é interpretado pelo Java como '> (+1)', permitindo 2 inscrições numa Sessão de PT (1-on-1).
+    - Para além de parecer um erro de digitação de teclado, deve ser alterado para:
+        if (ocupacaoAtual >= 1) { return false; }
 
-[!] 4. CLASSE Instrutor.java:
-    - Falta o método 'toString()' na classe Instrutor. Embora tenha getters, ter um toString() próprio é uma boa prática e facilita listagens e debugging.
+[!] 2. MENSAGEM DE ERRO EM Menu.java (linha 302-312):
+    - Em registarMarcacao(), se gestor.adicionarMarcacao(marcacao) retornar false (ex.: lotação esgotada), o menu volta sem imprimir mensagem nenhuma ao utilizador.
+    - Adicionar bloco else:
+        else {
+            System.out.println("Erro: Nao foi possivel efetuar a marcacao (lotacao esgotada).");
+        }
+
+[!] 3. AVISO NO JAVADOC DE Main.java:
+    - O compilador do Javadoc emite 1 warning devido ao construtor por defeito de Main:
+        "warning: use of default constructor, which does not provide a comment"
+    - Solução: Adicionar um construtor documentado em Main.java para garantir 0 warnings.
+
+[!] 4. MÉTODO toString() EM Instrutor.java:
+    - A classe Instrutor continua sem o método toString(). Recomenda-se adicionar para manter a consistência com todas as outras classes do modelo.
+
+[!] 5. FORMATAÇÃO EM Marcacao.toString():
+    - Em Marcacao.java, a data está a ser impressa no formato ISO bruto (ex.: 2026-11-02T08:30) e os valores monetários não usam String.format("%.2f", ...).
+    - Recomenda-se formatar com DateTimeFormatter ("dd/MM/yyyy HH:mm") e duas casas decimais.
+
 
 ================================================================================
-4. O QUE ESTÁ POR FAZER [TODO] A NÍVEL DE CÓDIGO
+4. O QUE FALTA PARA PODER ENTREGAR A FASE 1 (CHECKLIST FINAL)
 ================================================================================
 
-Para concluir a Fase 1 a 100%, é necessário implementar as funcionalidades 6 a 10 no Gestor e no Menu:
+O enunciado (pág. 4/5) exige formalmente os seguintes ficheiros para submissão:
 
-================================================================================
-5. ENTREGÁVEIS OBRIGATÓRIOS DA FASE 1 (CHECKLIST FINAL)
-================================================================================
-[ ] Código Java (.java) compilado e funcional (sem erros em tempo de execução).
-[ ] Javadoc compilado sem erros e exportado para ficheiro ZIP.
-[ ] Diagrama de Classes UML em formato PDF (sem classes abstratas nem polimorfismo).
-[ ] Relatório do Projeto em formato PDF.
-[ ] Ficheiros submetidos no InforEstudante dentro do prazo limite (25/10/2026).
+[ ] 1. Ficheiros de Código Java:
+    - Todas as classes .java sem compressão:
+      Main.java, Menu.java, Gestor.java, Socio.java, SocioIndividual.java,
+      SocioEmpresa.java, Instrutor.java, Atividade.java, AulaGrupo.java,
+      SessaoPT.java, Marcacao.java.
+
+[ ] 2. Diagrama de Classes UML (PDF):
+    - Desenhar o diagrama de classes da Fase 1 (ex.: usando PlantUML, Draw.io ou Visual Paradigm).
+    - ATENÇÃO: Na Fase 1 o diagrama NÃO pode ter classes abstratas nem polimorfismo.
+
+[ ] 3. Relatório do Projeto (PDF):
+    - Estrutura recomendada:
+      * Identificação do grupo (nomes e números).
+      * Descrição da arquitetura e das classes desenvolvidas.
+      * Explicação da herança simples e encapsulamento aplicados.
+      * Explicação da solução encontrada para evitar 'instanceof' (atributos tipoSocio e tipoAtividade).
+      * Descrição dos dados de teste/demonstração.
+      * Divisão do trabalho entre os elementos do grupo.
+
+[ ] 4. Ficheiro ZIP com o Javadoc:
+    - Gerar a documentação Javadoc completa:
+        javadoc -d javadoc *.java
+    - Compactar a pasta gerada num ficheiro .zip:
+        zip -r javadoc.zip javadoc/
+
+[ ] 5. Submissão no InforEstudante dentro do prazo estabelecido.
 ================================================================================

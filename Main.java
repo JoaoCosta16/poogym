@@ -7,6 +7,12 @@
 public class Main {
 
     /**
+     * Construtor privado da classe Main
+     */
+    private Main() {
+    }
+
+    /**
      * arranca a aplicacao e apresenta o menu
      * @param args argumentos da linha de comandos (nao utilizados)
      */

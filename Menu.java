@@ -309,6 +309,9 @@ public class Menu {
             System.out.printf("Preco Final a Pagar: %.2f EUR\n", marcacao.getPrecoFinal());
             System.out.println("----------------------------------------");
         }
+        else {
+            System.out.println("Erro: Nao foi possivel efetuar a marcacao. A atividade pode estar cheia ou ja ter sido marcada pelo socio.");
+        }
     }
 
     /**
